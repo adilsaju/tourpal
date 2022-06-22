@@ -11,18 +11,33 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h1>Sign In</h1>
-    <div>New user? <a href="">Create an account</a></div>
+    <header class="site-header">
+        <div class="site-logo">
+            <a href="landing-page.html"><img src="images/logo.png" alt="logo"></a>
+        </div>
+    </header>
+
+    <main>
+        <div class="hero-image_login">
+            <img src="images/v.jpg" alt="">
+        </div>
+        <div class="sign_in">
+            <h2>Sign In</h2>
+        <h4>New User?   <a href="register.html">Create an account</a></h4>
+        </div>
+    </main>
     <form action="#" id="temp1">
         <div><label for="email">Email</label><br><input name="email" type="email" id="email1" required></div>
         <div><label for="password">Password</label><br><input name="password" type="password" id="password1" required></div>
     </form>
-    <div>
+    <div class="signIn_button">
         <!-- <input type="submit" value="Add" id="add"> -->
         <button type="submit" id="signin">Sign-In</button>
+        <div><a href="">Forgot Password?</a></div>
 
     </div>
-    <div><a href="">Forgot Password?</a></div>
+    
+    
     <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-auth-compat.js"></script>
