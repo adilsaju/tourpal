@@ -31,11 +31,11 @@
         <h2>Book a trip</h2>
 
         <form action="#" id="temp1">
-            <div><label for="">Destination City</label><br><input name="dest" type="text" id="fname" required></div>
-            <div><label for="">Start Date Time</label><br><input name="sdate" type="datetime-local" id="c100" required></div>
-            <div><label for="">End Date Time</label><br><input name="edate" type="datetime-local" id="c100" required></div>
+            <div><label for="">City</label><br><input name="dest" type="text" id="fname" required></div>
+            <div><label for="">Depart Date Time</label><br><input name="sdate" type="datetime-local" id="c100" required></div>
+            <div><label for="">Finish Date Time</label><br><input name="edate" type="datetime-local" id="c100" required></div>
             <!-- <div><label for="">Duration</label><br><input type="number" id="f100" required></div> -->
-            <div><label for="">Number of travellers</label><br><input name="guest_count" type="number" id="p100" required></div>
+            <div><label for="">Number of people</label><br><input name="guest_count" type="number" id="p100" required></div>
             <div>
                 <!-- <input type="submit" value="Add" id="add"> -->
                 <button type="submit" id="add">Search</button>
@@ -46,27 +46,42 @@
             <h2>Curated Experiences to Choose from</h2>
             <form>
                 <div>
+                    <h3>Cooking Show</h3>
+                    <p>Join our best cooks to prepare a 5 stars fine dining dinner for your family</p>
                     <input type="radio" id="html" name="ce" value="HTML">
-                    <label for="html">Richmond and UBC</label><br>
+                    <label for="html">Pick</label><br>
+                    
+                    <h3>Art Museum</h3>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rerum, illo?</p>
                     <input type="radio" id="css" name="ce" value="CSS">
-                    <label for="css">Downtown</label><br>
+                    <label for="css">Pick</label><br>
+
+
+                    <h3>Theme Park</h3>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit, voluptates.</p>
+                    <input type="radio" id="js" name="ce" value="JS">
+                    <label for="js">Pick</label><br>
                 </div>
                 
             </form> 
-            <div>
-                <!-- <input type="submit" value="Add" id="add"> -->
-                <button  id="add2">Select Exp</button>
-            </div>
         </div>
 
         <div id="driver_list" style="visibility: hidden;">
-            <h2>Drivers</h2>
+            <div>
+                <span>Whistler</span>
+                <span>May 5</span>
+                <span>2PM - 5PM</span>
+                <span>4 People</span>
+            </div>
+            <h2>Pick a tour pal</h2>
             <form>
                 <div>
                     <input type="radio" id="d1" name="dl" value="HTML">
-                    <label for="d1">Richard</label><br>
+                    <label for="d1">Jordan Marlin</label><br>
+
                     <input type="radio" id="d2" name="dl" value="CSS">
                     <label for="d2">Andrew</label><br>
+                    
                     <input type="radio" id="d3" name="dl" value="JavaScript">
                     <label for="d3">Dopinder</label>
                 </div>
