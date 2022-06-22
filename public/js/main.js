@@ -8,7 +8,7 @@ add.addEventListener ('click', () => {
 
     cur_exp.style.visibility = "visible"
   });
-
+var abc=123
   add2.addEventListener ('click', () => {
     // if ( temp1.checkValidity() != true)
     // {
