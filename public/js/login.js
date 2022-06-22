@@ -12,26 +12,8 @@ const firebaseApp = firebase.initializeApp({
 const db = firebaseApp.firestore();
 const auth = firebaseApp.auth();
 
-signup.addEventListener ('click', () => {
 
-    console.log("clicked singup");  
-    // console.log(email.value, password.value)
-
-    const email = document.getElementById('email1').value
-    const password = document.getElementById('password1').value
-
-    auth.createUserWithEmailAndPassword(email, password)
-    .then((res) => {
-        console.log(res.user)
-    })
-    .catch((err) => {
-        alert(err.message)
-        console.log(err.code)
-        console.log(err.message)
-    })
-  });
-
-  signin.addEventListener ('click', () => {
+signin.addEventListener ('click', () => {
 
     console.log("clicked signin");  
     // console.log(email.value, password.value)
@@ -49,6 +31,8 @@ signup.addEventListener ('click', () => {
         console.log(err.message)
     })
   });
+
+
 
 //crud
   const saveData = () => {
