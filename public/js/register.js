@@ -23,6 +23,7 @@ signup.addEventListener ('click', () => {
     auth.createUserWithEmailAndPassword(email, password)
     .then((res) => {
         console.log(res.user)
+        alert("User successfully created")
     })
     .catch((err) => {
         alert(err.message)
