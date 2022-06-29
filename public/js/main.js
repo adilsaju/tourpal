@@ -1,5 +1,22 @@
-document.onload = function() {
-  console("it worked")
+window.onload = function() {
+  console.log("it worked")
+  let is_logged_in = false
+  try {
+    is_logged_in = sessionStorage.getItem('is_logged_in');
+    
+  } catch (error) {
+    is_logged_in = false
+  }
+  if (is_logged_in === true) {
+    //redirect
+    console.log("user already logged in. no problem")
+  }
+  else
+  {
+    let host = window.location.host
+    console.log(host)
+    window.location.href = `/public/landing-page.html`
+  }
 }
 
 add.addEventListener ('click', () => {
