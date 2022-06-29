@@ -1,3 +1,7 @@
+document.onload = function() {
+  console("it worked")
+}
+
 add.addEventListener ('click', () => {
     // if ( temp1.checkValidity() != true)
     // {
