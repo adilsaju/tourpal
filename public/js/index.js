@@ -8,11 +8,11 @@ window.onload = function() {
     is_logged_in = "false"
   }
   if (is_logged_in === "true") {
-    //redirect
     console.log("user already logged in. no problem")
   }
   else
   {
+    //redirect
     let host = window.location.host
     console.log(host)
     window.location.href = `/public/landing-page.html`
