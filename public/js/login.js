@@ -23,8 +23,9 @@ signin.addEventListener ('click', () => {
 
     auth.signInWithEmailAndPassword(email, password)
     .then((res) => {
-        console.log(res.user)
-        alert(`Welcome ${email}`)
+
+
+        onSuccessLogin(email, password, res);
     })
     .catch((err) => {
         alert(err.message)
@@ -33,5 +34,21 @@ signin.addEventListener ('click', () => {
     })
   });
 
+function onSuccessLogin(email, password, res) {
+    console.log("on success")
 
+    console.log(res.user)
+    // alert(`Welcome ${email}`)
+
+
+
+    sessionStorage.setItem('is_logged_in', true);
+    sessionStorage.setItem('logged_in_email', email);
+    sessionStorage.setItem('logged_in_password', password);
+    sessionStorage.setItem('user_type', "customer");
+
+    window.location.href = `/public/index.html`
+
+
+}
 

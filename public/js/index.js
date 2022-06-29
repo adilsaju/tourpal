@@ -1,13 +1,13 @@
 window.onload = function() {
-  console.log("it worked")
-  let is_logged_in = false
+  // console.log("it worked")
+  let is_logged_in = "false"
   try {
     is_logged_in = sessionStorage.getItem('is_logged_in');
     
   } catch (error) {
-    is_logged_in = false
+    is_logged_in = "false"
   }
-  if (is_logged_in === true) {
+  if (is_logged_in === "true") {
     //redirect
     console.log("user already logged in. no problem")
   }
