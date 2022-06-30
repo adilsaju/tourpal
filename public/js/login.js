@@ -47,7 +47,7 @@ function onSuccessLogin(email, password, res) {
     sessionStorage.setItem('logged_in_password', password);
     sessionStorage.setItem('user_type', "customer");
 
-    window.location.href = `/public/index.html`
+    window.location.href = `/public/templates/customer/index.html`
 
 
 }
@@ -58,6 +58,6 @@ window.onload = function() {
   if (is_logged_in === "true") {
     //redirect
     console.log("user already logged in")
-    window.location.href = `/public/index.html`
+    window.location.href = `/public/templates/customer/index.html`
   }
 }

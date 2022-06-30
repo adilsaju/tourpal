@@ -6,7 +6,7 @@ window.onload = function() {
 
       
       console.log("all removed")
-    window.location.href = `/public/landing-page.html`
+    window.location.href = `/public/templates/landing-page.html`
 
     
   }

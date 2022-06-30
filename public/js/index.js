@@ -15,7 +15,7 @@ window.onload = function() {
     //redirect
     let host = window.location.host
     console.log(host)
-    window.location.href = `/public/landing-page.html`
+    window.location.href = `/public/templates/landing-page.html`
   }
 }
 
@@ -63,7 +63,7 @@ var abc=123
 
     // window.location.replace("http://127.0.0.1:5500/public/index.html");
 
-    window.location.pathname = 'public/payment.html'
+    window.location.pathname = 'public/templates/customer/payment.html'
     // src.style.visibility = "visible"
   });
 
