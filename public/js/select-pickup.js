@@ -66,7 +66,7 @@ add4.addEventListener ('click', () => {
     })
     .catch((error) => {
         console.error("Error adding document: ", error);
-    window.location.pathname = 'public/templates/customer/payment.html'
+    // window.location.pathname = 'public/templates/customer/payment.html'
 
     });
 }
