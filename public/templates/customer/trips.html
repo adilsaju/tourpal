@@ -7,8 +7,38 @@
     <title>Document</title>
 </head>
 <body>
-    trips
-</body>
-<script src=""></script>
+    <h3>trips</h3>
+    <div id="body1">
 
+    </div>
+</body>
+<script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-auth-compat.js"></script>
+
+<script src=""></script>
+<script>
+    const firebaseApp = firebase.initializeApp({
+        //Your own Firebase Credentials..
+        apiKey: "AIzaSyBT-dRzb2pbR9exsiiIJtoILkf5ck3X0pg",
+        authDomain: "tourpal-e680e.firebaseapp.com",
+        databaseURL: "https://tourpal-e680e-default-rtdb.firebaseio.com",
+        projectId: "tourpal-e680e",
+        storageBucket: "tourpal-e680e.appspot.com",
+        messagingSenderId: "648603206107",
+        appId: "1:648603206107:web:c425541113bc713a2be7fe",
+        measurementId: "G-G9LL7MBNG0"
+      });
+      const db = firebaseApp.firestore();
+      const body= document.querySelector("#body1")
+    db.collection("trip").get().then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            // doc.data() is never undefined for query doc snapshots
+            console.log(doc.id, " => ", doc.data());
+            body.innerHTML+=`<br>`
+            body.innerHTML+=`${doc.data().destination}`
+      
+        });
+      });
+</script>
 </html>
