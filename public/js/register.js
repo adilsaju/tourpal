@@ -23,7 +23,7 @@ signup.addEventListener ('click', () => {
     auth.createUserWithEmailAndPassword(email, password)
     .then((res) => {
         console.log(res.user)
-        alert("User successfully created")
+        onSuccessRegister(email, password, res);
     })
     .catch((err) => {
         alert(err.message)
@@ -40,4 +40,15 @@ signup.addEventListener ('click', () => {
     console.log("user already logged in")
     window.location.href = `/public/templates/customer/index.html`
   }
+}
+
+function onSuccessRegister(email, password, res) {
+  console.log("on success")
+
+  // alert(`Welcome ${email}`)
+  alert("User successfully created")
+
+  window.location.href = `/public/templates/login.html`
+
+
 }
