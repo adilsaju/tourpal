@@ -19,6 +19,11 @@ signup.addEventListener ('click', () => {
 
     const email = document.getElementById('email').value
     const password = document.getElementById('password').value
+    const password2 = document.getElementById('confirmpassword').value
+    if (password !== password2){
+      alert("passwords not same - error")
+      return
+    }
 
     auth.createUserWithEmailAndPassword(email, password)
     .then((res) => {
