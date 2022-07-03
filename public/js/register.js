@@ -20,6 +20,10 @@ signup.addEventListener ('click', () => {
     const email = document.getElementById('email').value
     const password = document.getElementById('password').value
     const password2 = document.getElementById('confirmpassword').value
+    const fullname = document.getElementById('fullname').value
+    const phone = document.getElementById('phone').value
+    const picture = document.getElementById('picture').value
+
     if (password !== password2){
       alert("passwords not same - error")
       return
@@ -28,6 +32,9 @@ signup.addEventListener ('click', () => {
     auth.createUserWithEmailAndPassword(email, password)
     .then((res) => {
         console.log(res.user)
+        //TODO pic
+        console.log(picture)
+        addToDb(email, password, fullname, phone, picture);
         onSuccessRegister(email, password, res);
     })
     .catch((err) => {
@@ -47,13 +54,30 @@ signup.addEventListener ('click', () => {
   }
 }
 
+function addToDb(email, password, fullname, phone, picture) {
+  db.collection('customer')
+  .add({
+      email: email,
+      password: password,
+      name: fullname,
+      phone_number: phone,
+      picture: picture
+  })
+  .then((docRef) => {
+      console.log("Document written with ID: ", docRef.id);
+  })
+  .catch((error) => {
+      console.error("Error adding document: ", error);
+  });
+}
+
 function onSuccessRegister(email, password, res) {
   console.log("on success")
 
   // alert(`Welcome ${email}`)
   alert("User successfully created")
 
-  window.location.href = `/public/templates/login.html`
+  // window.location.href = `/public/templates/login.html`
 
 
 }
