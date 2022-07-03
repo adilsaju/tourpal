@@ -8,34 +8,47 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign In</title>
-    <link rel="stylesheet" href="/public/css/login.css">
+    <link rel="stylesheet" href="/public/css/style.css">
 </head>
 <body>
     <header class="site-header">
         <div class="site-logo">
-            <a href="/public/templates/landing-page.html"><img src="/public/images/tourpal-logo.svg" alt="logo"></a>
+            <a href="landing-page.html"><img src="images/logo.png" alt="logo"></a>
         </div>
     </header>
 
     <main>
         <div class="hero-image_login">
-            <img src="/public/images/v.jpg" alt="">
+            <img src="images/v.jpg" alt="">
         </div>
-        <div class="sign_in">
-            <h2>Sign In</h2>
-        <h4>New User?   <a href="/public/templates/register.html">Create an account</a></h4>
+        <div class="form_wrapper_register">
+            <div class="register_form">
+                <div class="sign_in">
+                    <h2>Sign In</h2>
+                <h4>New User?   <a href="register.html">Create an account</a></h4>
+                </div>
+    
+    
+                <form action="#" id="temp1">
+                    <div><label for="email">Email</label><br><input name="email" type="email" id="email1" required></div>
+                    <div><label for="password">Password</label><br><input name="password" type="password" id="password1" required></div>
+                    <div class="signIn_button">
+                        <!-- <input type="submit" value="Add" id="add"> -->
+                        <button type="submit" id="signin">Sign-In</button>
+                        <div class="forgot_password"><a href="">Forgot Password?</a></div>
+                
+                    </div>
+                </form>
+            </div>
+        
+        <div class="register_form_image">
+            <img src="images/t.jpg" alt="">
         </div>
-    </main>
-    <form action="#" id="temp1">
-        <div><label for="email">Email</label><br><input name="email" type="email" id="email1" required></div>
-        <div><label for="password">Password</label><br><input name="password" type="password" id="password1" required></div>
-    </form>
-    <div class="signIn_button">
-        <!-- <input type="submit" value="Add" id="add"> -->
-        <button type="submit" id="signin">Sign-In</button>
-        <div><a href="/public/templates/forgot-password.html">Forgot Password?</a></div>
-
     </div>
+ 
+    </main>
+    
+    
     
     
     <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>

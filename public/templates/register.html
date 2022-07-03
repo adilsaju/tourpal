@@ -1,49 +1,70 @@
 <!-- NOTE: This is the page user sees after landing page on clicking signin button -->
 
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up or Register for Tourpal</title>
-    <link rel="stylesheet" href="/public/css/login.css">
+    <link rel="stylesheet" href="/public/css/style.css">
 </head>
+
 <body>
     <header class="site-header">
         <div class="site-logo">
-            <a href="/public/templates/landing-page.html"><img src="/public/images/tourpal-logo.svg" alt="logo"></a>
+            <a href="landing-page.html"><img src="images/logo.png" alt="logo"></a>
         </div>
     </header>
+    <div class="form_wrapper_register">
+        <div class="register_form">
+        <h1 class="register-page-heading">Create an account</h1>
+        <div class="had-account">
+            <span>Had account?</span> <a href="login.html" class="signIn"><u>Sign In</u></a>
+        </div>
 
-    <h1>sign up or register for Tourpal</h1>
-    <div>
-        Had account? <a href="/public/templates/login.html">Sign In</a>
+
+        <form action="#" id="temp1">
+            <div class="p1">
+                <!--<label for="firstname">firstname</label>--><br><input name="firstname" type="firstname"
+                    id="firstname" required placeholder="First name"></div>
+            <div>
+                <!--<label for="lastname">lastname</label>--><br><input name="lastname" type="lastname" id="lastname"
+                    required placeholder="Last name"></div>
+            <div>
+                <!--<label for="email">Email</label>--><br><input name="email" type="email" id="email" required
+                    placeholder="Email"></div>
+            <div>
+                <!--<label for="phone">phone</label>--><br><input name="phone" type="phone" id="phone" required
+                    placeholder="Phone"></div>
+            <div>
+                <!--<label for="password">Password</label>--><br><input name="password" type="password" id="password"
+                    required placeholder="Password"></div>
+            <div>
+                <!--<label for="confirmpassword">confirm password</label>--><br><input name="confirmpassword"
+                    type="confirmpassword" id="confirmpassword" required placeholder="Confirm Password"></div>
+            <div>
+                <!-- <input type="submit" value="Add" id="add"> -->
+                <button type="submit" id="signup">Create Account</button> <br>
+
+            </div>
+        </form>
+        </div>
+    
+    <div class="register_form_image">
+        <img src="images/t.jpg" alt="">
     </div>
-    <a href=""></a>
-    <form action="#" id="temp1">
-        <div><label for="fullname">fullname</label><br><input name="fullname" type="text" id="fullname" required></div>
+</div>
 
-        <div><label for="email">Email</label><br><input name="email" type="email" id="email" required></div>
-        <div><label for="phone">phone</label><br><input name="phone" type="number" id="phone" required></div>
-
-        <div><label for="password">Password</label><br><input name="password" type="password" id="password" required></div>
-        <div><label for="confirmpassword">confirm password</label><br><input name="confirmpassword" type="text" id="confirmpassword" required></div>
-        <div><label for="picture">picture</label><br><input name="picture" type="file" id="picture" ></div>
-
-
-    </form>
-    <div>
-        <!-- <input type="submit" value="Add" id="add"> -->
-        <button type="submit" id="signup">Create Account</button> <br>
-
-    </div>
-
+    <footer class="register-footer">
+        <p>@ 2022 Tourpal. All Rights Reserved.</p>
+    </footer>
     <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-auth-compat.js"></script>
 
     <script src="/public/js/register.js"></script>
 </body>
+
 </html>
