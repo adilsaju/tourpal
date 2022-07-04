@@ -19,43 +19,47 @@
     </header>
     <div class="form_wrapper_register">
         <div class="register_form">
-        <h1 class="register-page-heading">Create an account</h1>
-        <div class="had-account">
-            <span>Had account?</span> <a href="login.html" class="signIn"><u>Sign In</u></a>
-        </div>
-
-
-        <form action="#" id="temp1">
-            <div class="p1">
-                <!--<label for="firstname">firstname</label>--><br><input name="firstname" type="firstname"
-                    id="firstname" required placeholder="First name"></div>
-            <div>
-                <!--<label for="lastname">lastname</label>--><br><input name="lastname" type="lastname" id="lastname"
-                    required placeholder="Last name"></div>
-            <div>
-                <!--<label for="email">Email</label>--><br><input name="email" type="email" id="email" required
-                    placeholder="Email"></div>
-            <div>
-                <!--<label for="phone">phone</label>--><br><input name="phone" type="phone" id="phone" required
-                    placeholder="Phone"></div>
-            <div>
-                <!--<label for="password">Password</label>--><br><input name="password" type="password" id="password"
-                    required placeholder="Password"></div>
-            <div>
-                <!--<label for="confirmpassword">confirm password</label>--><br><input name="confirmpassword"
-                    type="confirmpassword" id="confirmpassword" required placeholder="Confirm Password"></div>
-            <div>
-                <!-- <input type="submit" value="Add" id="add"> -->
-                <button type="submit" id="signup">Create Account</button> <br>
-
+            <h1 class="register-page-heading">Create an account</h1>
+            <div class="had-account">
+                <span>Had account?</span> <a href="login.html" class="signIn"><u>Sign In</u></a>
             </div>
-        </form>
+
+
+            <form action="#" id="temp1">
+                <div class="p1">
+                    <!--<label for="firstname">firstname</label>--><br><input name="fullname" type="text" id="fullname"
+                        required placeholder="Full name">
+                </div>
+
+                <div>
+                    <!--<label for="email">Email</label>--><br><input name="email" type="email" id="email" required
+                        placeholder="Email">
+                </div>
+                <div>
+                    <!--<label for="phone">phone</label>--><br><input name="phone" type="text" minlength="10" maxlength="10" id="phone" required
+                        placeholder="Phone">
+                </div>
+                <div>
+                    <!--<label for="password">Password</label>--><br><input name="password" type="password"
+                        id="password" required placeholder="Password">
+                </div>
+                <div>
+                    <!--<label for="confirmpassword">confirm password</label>--><br><input name="confirmpassword"
+                        type="text" id="confirmpassword" required placeholder="Confirm Password">
+                </div>
+                <div><br><input name="picture" type="file" id="picture"></div>
+
+                <div>
+                    <!-- <input type="submit" value="Add" id="add"> -->
+                    <button id="signup">Create Account</button> <br>
+                </div>
+            </form>
         </div>
-    
-    <div class="register_form_image">
-        <img src="/public/images/t.jpg" alt="">
+
+        <div class="register_form_image">
+            <img src="/public/images/t.jpg" alt="">
+        </div>
     </div>
-</div>
 
     <footer class="register-footer">
         <p>@ 2022 Tourpal. All Rights Reserved.</p>

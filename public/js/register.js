@@ -12,7 +12,15 @@ const firebaseApp = firebase.initializeApp({
 const db = firebaseApp.firestore();
 const auth = firebaseApp.auth();
 
-signup.addEventListener ('click', () => {
+signup.addEventListener ('click', (e) => {
+  e.preventDefault();
+  console.log("haha")
+  temp1.checkValidity();
+  temp1.reportValidity();
+  if ( temp1.checkValidity() != true)
+  {
+      return;
+  }
 
     console.log("clicked singup");  
     // console.log(email.value, password.value)
@@ -77,7 +85,7 @@ function onSuccessRegister(email, password, res) {
   // alert(`Welcome ${email}`)
   alert("User successfully created")
 
-  // window.location.href = `/public/templates/login.html`
+  window.location.href = `/public/templates/login.html`
 
 
 }
