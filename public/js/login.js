@@ -13,7 +13,16 @@ const db = firebaseApp.firestore();
 const auth = firebaseApp.auth();
 
 
-signin.addEventListener ('click', () => {
+signin.addEventListener ('click', (e) => {
+  e.preventDefault();
+  console.log("haha")
+  temp1.checkValidity();
+  temp1.reportValidity();
+  if ( temp1.checkValidity() != true)
+  {
+      return;
+  }
+
 
     console.log("clicked signin");  
     // console.log(email.value, password.value)
