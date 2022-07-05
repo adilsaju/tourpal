@@ -15,3 +15,10 @@ form img {
     height: 5rem;
     /* height: 10%; */
 }
+
+@media screen and (min-width: 1000px) {
+form {
+    max-width: 50%;
+    margin-left: 1rem;
+}
+}
