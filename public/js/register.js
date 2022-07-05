@@ -12,6 +12,26 @@ const firebaseApp = firebase.initializeApp({
 const db = firebaseApp.firestore();
 const auth = firebaseApp.auth();
 
+// picture.addEventListener('change',(e)=>{
+//   console.log("uploadddddd")
+//   const picture = document.getElementById('picture').files[0]
+//   const file = picture;
+//   console.log(file)
+//   if (file) {
+//       const reader = new FileReader();
+//       // previewDefaultText.style.display = "none"
+//       outboximg.style.display = "block"
+//       console.log(outboximg)
+
+//       reader.readAsDataURL(file)
+
+//       outboximg.setAttribute("src", reader.result);
+//       reader.addEventListener("load", () => {
+//       });
+
+//   }
+// })
+
 signup.addEventListener ('click', (e) => {
   e.preventDefault();
   console.log("haha")
@@ -30,26 +50,31 @@ signup.addEventListener ('click', (e) => {
     const password2 = document.getElementById('confirmpassword').value
     const fullname = document.getElementById('fullname').value
     const phone = document.getElementById('phone').value
-    const picture = document.getElementById('picture').value
-
-    if (password !== password2){
-      alert("passwords not same - error")
-      return
+    const picture = document.getElementById('picture').files[0]
+    var reader = new FileReader();
+    reader.readAsDataURL(picture); 
+    // IMP: MAx 1MB upload supported
+    //FirebaseError: The value of property "picture" is longer than 1048487 bytes.
+    reader.onloadend = function() {
+      let base64data = reader.result;                
+      console.log(base64data);
+      if (password !== password2){
+        alert("passwords not same - error")
+        return
+      }
+  
+      auth.createUserWithEmailAndPassword(email, password)
+      .then((res) => {
+          console.log(res.user)
+          // console.log(picture)
+          addToDb(email, password, fullname, phone, base64data, res);
+      })
+      .catch((err) => {
+          alert(err.message)
+          console.log(err.code)
+          console.log(err.message)
+      })
     }
-
-    auth.createUserWithEmailAndPassword(email, password)
-    .then((res) => {
-        console.log(res.user)
-        //TODO pic
-        console.log(picture)
-        addToDb(email, password, fullname, phone, picture);
-        onSuccessRegister(email, password, res);
-    })
-    .catch((err) => {
-        alert(err.message)
-        console.log(err.code)
-        console.log(err.message)
-    })
   });
 
   window.onload = function() {
@@ -62,7 +87,7 @@ signup.addEventListener ('click', (e) => {
   }
 }
 
-function addToDb(email, password, fullname, phone, picture) {
+function addToDb(email, password, fullname, phone, picture, res) {
   db.collection('customer')
   .add({
       email: email,
@@ -73,9 +98,12 @@ function addToDb(email, password, fullname, phone, picture) {
   })
   .then((docRef) => {
       console.log("Document written with ID: ", docRef.id);
+      onSuccessRegister(email, password, res);
+
   })
   .catch((error) => {
       console.error("Error adding document: ", error);
+      alert("error")
   });
 }
 
