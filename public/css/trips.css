@@ -84,12 +84,34 @@ header nav {
 
 }
 
-
-
 #menu {
     padding: 1rem;
 }
 
+h2 {
+    font-size: 1rem;
+}
+.history {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: .5rem;
+}
+.history h3 {
+    grid-column: 1/-1;
+}
+.history img, .upcomings img {
+    max-width: 16rem;
+    border-radius: 2rem;
+}
+.upcomings {
+    display: flex;
+    flex-flow: row wrap;
+    background-color: red;
+    color: white;
+}
+.upcomings h3 {
+    flex: 1 0 100%;
+}
 
 @media screen and (min-width: 1000px) {
 
@@ -121,4 +143,11 @@ header nav {
     }
     
 
+
+
+    .history {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: .5rem;
+    }
 }
