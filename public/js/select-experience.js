@@ -49,28 +49,28 @@ db.collection("experience").get().then((querySnapshot) => {
   querySnapshot.forEach((doc) => {
       // doc.data() is never undefined for query doc snapshots
       console.log(doc.id, " => ", doc.data());
-      const pdiv = document.createElement("div")
-      const h3 = document.createElement("h3")
+      const pdiv = document.createElement("article")
+      const h2 = document.createElement("h2")
       const p = document.createElement("p")
       const input = document.createElement("input")
       
-      input.setAttribute("type", "radio")
+      input.setAttribute("type", "button")
       input.setAttribute("name", "ce")
       // input.setAttribute("value", "radio")
       const label = document.createElement("label")
       const img = document.createElement("img")
       img.setAttribute("src", `data:image/jpeg;base64,${doc.data().picture}`)
       
-      h3.innerHTML = `${doc.data().name}`
+      h2.innerHTML = `${doc.data().name}`
       p.innerHTML = `${doc.data().description}`
       label.innerHTML = `pick`
 
       console.log(pdiv)
-      pdiv.appendChild(h3)
+      pdiv.appendChild(img)
+      pdiv.appendChild(h2)
       pdiv.appendChild(p)
       pdiv.appendChild(input)
       pdiv.appendChild(label)
-      pdiv.appendChild(img)
 
 
       exps.appendChild(pdiv)

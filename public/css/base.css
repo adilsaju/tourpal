@@ -2,7 +2,23 @@
 @import "reset.css";
 ul {
     list-style-type: none;
+    padding-left: 0;
 }
 a {
     text-decoration: none;
+}
+
+/* img{
+max-width: 100%;
+height: auto;
+} */
+
+.visually-hidden {
+clip: rect(0 0 0 0);
+clip-path: inset(50%);
+height: 1px;
+overflow: hidden;
+position: absolute;
+white-space: nowrap;
+width: 1px;
 }
