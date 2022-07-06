@@ -18,7 +18,8 @@ window.addEventListener("load", yourfunction, false);
 
 function yourfunction() {
   const selected_info = document.querySelector("#selected_info")
-
+  const city_filler = document.querySelector("#city_filler")
+  
   selected_info.innerHTML = `
   <ul>
   <li class="location-experiences">${sessionStorage.getItem('city')}</li>
@@ -32,21 +33,9 @@ function yourfunction() {
   `
 
 
-
+  city_filler.innerHTML = `${sessionStorage.getItem('city')}`
   console.log("hw")
-//   const readData = () => {
-//     db.collection('experience')
-//     .get()
-//     .then((data) => {
-//         console.log(data.docs.map((item) => {
-//             let a =  {...item.data(), id: item.id}
-//             // console.log(a[0])
-//             return a
-//         }))
 
-//     })
-// }
-// readData()
 const exps = document.querySelector("#exps")
 
 db.collection("experience").get().then((querySnapshot) => {
@@ -78,15 +67,7 @@ db.collection("experience").get().then((querySnapshot) => {
       pdiv.appendChild(p)
       pdiv.appendChild(button)
       // pdiv.appendChild(label)
-
-
       exps.appendChild(pdiv)
-
-
-
-
-
-
 
   });
 });
