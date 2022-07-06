@@ -22,3 +22,137 @@ position: absolute;
 white-space: nowrap;
 width: 1px;
 }
+
+
+
+/* @import "login.css"; */
+body {
+    
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6{
+    margin: 0;
+    font-family: 'Comfortaa', cursive;;
+}
+header{
+    border-bottom: 1px solid #ccc;
+    /* box-shadow: 1px 1px ; */
+}
+.site-logo{
+    text-align: center;
+    padding: 1rem;
+    margin: .1rem;
+}
+.site-logo img{
+    width:50%;
+}
+.main_heading{
+    padding:1rem;
+    text-align: center;
+    font-size: 25px;
+}
+main{
+    padding: 1rem;
+}
+img{
+    width:100%;
+height: 100%;
+    object-fit: cover;
+
+}
+
+
+
+/* extra reset */
+a {
+    text-decoration: none;
+    color: black;
+}
+a:hover {
+    color: red;
+}
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 1rem 0;
+}
+
+/* ========= */
+header > div:nth-of-type(1) {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    /* align-items: center; */
+}
+
+nav ul {
+    /* display: flex; */
+    display: grid;
+    /* grid-template-columns: 1fr 1fr 1fr 1fr 1fr; */
+    grid-gap: 1rem;
+    text-align: center;
+}
+
+header img {
+    /* text-align: center; */
+    display: block;
+    margin: auto;
+}
+header nav {
+    /* FIXME: */
+    /* transition: all 1s ease-in; */
+}
+
+.hide {
+    display: none;
+
+}
+
+
+
+#menu {
+    padding: 1rem;
+}
+
+/* FOOTER Section =========== */
+
+.footer-section, .register-footer{
+    background-color: #ccc;
+}
+.footer-section p, .register-footer p{
+    padding: 1rem 3%;
+}
+
+
+@media screen and (min-width: 1000px) {
+
+    
+
+    nav ul {
+        /* display: flex; */
+        display: grid;
+        /* grid-template-columns: 1fr 1fr 1fr 1fr 1fr; */
+        grid-gap: 1rem;
+        text-align: center;
+    }
+
+    header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    header > div:nth-of-type(1) i  {
+        display: none;
+    }
+    header ul {
+        display: flex;
+        align-items: center;
+    }
+    .hide {
+        display: block;    
+    }
+    
+
+}

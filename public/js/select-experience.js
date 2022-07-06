@@ -13,20 +13,7 @@ const db = firebaseApp.firestore();
 // const auth = firebaseApp.auth();
 
 // var abc=123
-add2.addEventListener ('click', () => {
-  // if ( temp1.checkValidity() != true)
-  // {
-  //     return;
-  // }
 
-  console.log("clicked add");  
-
-  // driver_list.style.visibility = "visible"
-  sessionStorage.setItem('experienceSelected', "Cooking Show");
-
-  window.location.href = `/public/templates/customer/select-driver.html`
-
-});
 
 window.onload = function() {
   console.log("hw")
@@ -52,28 +39,49 @@ db.collection("experience").get().then((querySnapshot) => {
       const pdiv = document.createElement("article")
       const h2 = document.createElement("h2")
       const p = document.createElement("p")
-      const input = document.createElement("input")
+      const button = document.createElement("button")
       
-      input.setAttribute("type", "button")
-      input.setAttribute("name", "ce")
-      // input.setAttribute("value", "radio")
-      const label = document.createElement("label")
+      button.setAttribute("type", "button")
+      button.setAttribute("name", "ce")
+      button.setAttribute("class", "add2")
+
+      button.innerText=`Pick`
+      // const label = document.createElement("label")
       const img = document.createElement("img")
       img.setAttribute("src", `data:image/jpeg;base64,${doc.data().picture}`)
       
       h2.innerHTML = `${doc.data().name}`
       p.innerHTML = `${doc.data().description}`
-      label.innerHTML = `pick`
+      // label.innerHTML = `pick`
 
       console.log(pdiv)
       pdiv.appendChild(img)
       pdiv.appendChild(h2)
       pdiv.appendChild(p)
-      pdiv.appendChild(input)
-      pdiv.appendChild(label)
+      pdiv.appendChild(button)
+      // pdiv.appendChild(label)
 
 
       exps.appendChild(pdiv)
+
+
+
+
+      const nextBtn = document.querySelectorAll("button")
+nextBtn[0].addEventListener ('click', () => {
+  // if ( temp1.checkValidity() != true)
+  // {
+  //     return;
+  // }
+
+  console.log("clicked add");  
+
+  // driver_list.style.visibility = "visible"
+  sessionStorage.setItem('experienceSelected', "Cooking Show");
+
+  window.location.href = `/public/templates/customer/select-driver.html`
+
+});
 
 
   });
