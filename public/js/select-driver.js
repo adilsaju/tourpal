@@ -27,19 +27,22 @@ add3.addEventListener ('click', () => {
 
   });
   
+  window.addEventListener("load", yourfunction, false); 
 
-  window.onload = function() {
+  function yourfunction() {
   const selected_info = document.querySelector("#selected_info")
   const driver_list = document.querySelector("#driver_list")
   const selection = document.querySelector("#selection")
 
   selected_info.innerHTML = `
   <ul>
-  <li>${sessionStorage.getItem('city')}</li>
+  <li  class="location-experiences" >${sessionStorage.getItem('city')}</li>
   <li>${sessionStorage.getItem('departDateTime')}</li>
   <li>${sessionStorage.getItem('finishDateTime')}</li>
   <li>${sessionStorage.getItem('noOfPeople')}</li>
   <li>${sessionStorage.getItem('experienceSelected')}</li>
+  <li><a href="#"><i class="fas fa-pen"></i></a></li>
+
   
   </ul>
   `

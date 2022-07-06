@@ -14,8 +14,25 @@ const db = firebaseApp.firestore();
 
 // var abc=123
 
+window.addEventListener("load", yourfunction, false); 
 
-window.onload = function() {
+function yourfunction() {
+  const selected_info = document.querySelector("#selected_info")
+
+  selected_info.innerHTML = `
+  <ul>
+  <li class="location-experiences">${sessionStorage.getItem('city')}</li>
+  <li>${sessionStorage.getItem('departDateTime')}</li>
+  <li>${sessionStorage.getItem('finishDateTime')}</li>
+  <li>${sessionStorage.getItem('noOfPeople')}</li>
+  <li>${sessionStorage.getItem('experienceSelected')}</li>
+  <li><a href="#"><i class="fas fa-pen"></i></a></li>
+  
+  </ul>
+  `
+
+
+
   console.log("hw")
 //   const readData = () => {
 //     db.collection('experience')
@@ -44,6 +61,7 @@ db.collection("experience").get().then((querySnapshot) => {
       button.setAttribute("type", "button")
       button.setAttribute("name", "ce")
       button.setAttribute("class", "add2")
+      button.onclick=pick_fn
 
       button.innerText=`Pick`
       // const label = document.createElement("label")
@@ -67,8 +85,17 @@ db.collection("experience").get().then((querySnapshot) => {
 
 
 
-      const nextBtn = document.querySelectorAll("button")
-nextBtn[0].addEventListener ('click', () => {
+
+
+
+  });
+});
+}
+
+function pick_fn() {
+
+// const nextBtn = document.querySelectorAll("button")
+// nextBtn[0].addEventListener ('click', () => {
   // if ( temp1.checkValidity() != true)
   // {
   //     return;
@@ -81,9 +108,6 @@ nextBtn[0].addEventListener ('click', () => {
 
   window.location.href = `/public/templates/customer/select-driver.html`
 
-});
+// });
 
-
-  });
-});
 }
