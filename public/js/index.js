@@ -26,16 +26,17 @@ window.onload = function() {
   }
 }
 
-add.addEventListener ('click', () => {
-    // if ( temp1.checkValidity() != true)
-    // {
-    //     return;
-    // }
+add.addEventListener ('click', (e) => {
+  e.preventDefault();
+  console.log("haha")
+  temp1.checkValidity();
+  temp1.reportValidity();
+  if ( temp1.checkValidity() != true)
+  {
+      return;
+  }
 
     console.log("clicked add");  
-
-    // cur_exp.style.visibility = "visible"
-    // location.href = "www.yoursite.com";
 
   //SAVEEE
   const city = document.querySelector("#fname")
