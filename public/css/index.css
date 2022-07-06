@@ -127,6 +127,10 @@ form div label{
 form > div:nth-last-of-type(1) {
     border: none;
 }
+.extra_img {
+    display: none;
+}
+
 
 @media screen and (min-width: 1000px) {
 
@@ -157,6 +161,25 @@ form > div:nth-last-of-type(1) {
     .hide {
         display: block;    
     }
-    
+    main {
+        max-width: 80%;
+        margin-left: 1rem;
+    }
+
+
+    body {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    header, footer {
+        grid-column: 1/-1;
+    }
+    .extra_img {
+        display: block;
+        width: 20rem;
+    }
+    .extra_img img {
+        border-radius: 2rem;
+    }
 
 }
