@@ -1,6 +1,6 @@
 @import "base.css";
 
-ul {
+#selected_info ul {
     display: flex;
     grid-gap: 1rem;
     border: 1px solid grey;
