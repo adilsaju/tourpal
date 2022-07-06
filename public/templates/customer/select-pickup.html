@@ -1,29 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <div id="src" >
-        <h2>Pick you up at</h2>
+<html>
+    <head>
+        <style type="text/css">
+          #map{ width:700px; height: 500px; }
+        </style>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDqGXY4A-xF5cl-4yLpTkktzNpSzgEDDDg&callback=initMap&v=weekly"></script>
+        <title>Save Marker Example</title>
+    </head>
+    <body>
 
-        <form action="">
-        <div><label for="">Source Location</label><br><input name="src" type="text" id="fname2" required></div>
+        <div id="src" >
+            <h2>Pick you up at</h2>
+        <p>Click on a location on the map to select it. Drag the marker to change location.</p>
+
+    
+            <!-- <form action="">
+            <div><label for="">Source Location</label><br><input name="src" type="text" id="fname2" required></div>
+            </form> -->
+
+        <!--map div-->
+        <div id="map"></div>
+        
+        <!--our form-->
+        <h2>Chosen Location</h2>
+        <form method="post">
+            <input type="text" id="lat" readonly="yes"><br>
+            <input type="text" id="lng" readonly="yes">
         </form>
-        <div>
-            <!-- <input type="submit" value="Add" id="add"> -->
-            <button  id="add4">Select Location</button>
+
+
+
+            <div>
+                <!-- <input type="submit" value="Add" id="add"> -->
+                <button  id="add4">Select Location</button>
+            </div>
         </div>
-    </div>
-
-    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-auth-compat.js"></script>
 
 
-    <script src="/public/js/select-pickup.js"></script>
-</body>
+
+
+
+        
+
+        
+        <script type="text/javascript" src="/public/js/map.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore-compat.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-auth-compat.js"></script>
+        <script src="/public/js/select-pickup.js"></script>
+    </body>
 </html>

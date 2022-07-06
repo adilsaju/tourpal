@@ -19,7 +19,7 @@ add4.addEventListener ('click', () => {
     // }
   
     console.log("final data: "); 
-    console.log(fname2.name, fname2.value)
+    // console.log(fname2.name, fname2.value)
   
     // window.location.replace("http://127.0.0.1:5500/public/index.html");
     sessionStorage.setItem('customerPickupLocation', 'Burnaby' )
