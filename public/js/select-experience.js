@@ -26,7 +26,6 @@ function yourfunction() {
   <li>${sessionStorage.getItem('departDateTime')}</li>
   <li>${sessionStorage.getItem('finishDateTime')}</li>
   <li>${sessionStorage.getItem('noOfPeople')}</li>
-  <li>${sessionStorage.getItem('experienceSelected')}</li>
   <li><a href="#"><i class="fas fa-pen"></i></a></li>
   
   </ul>
