@@ -12,26 +12,6 @@ const firebaseApp = firebase.initializeApp({
 const db = firebaseApp.firestore();
 const auth = firebaseApp.auth();
 
-// picture.addEventListener('change',(e)=>{
-//   console.log("uploadddddd")
-//   const picture = document.getElementById('picture').files[0]
-//   const file = picture;
-//   console.log(file)
-//   if (file) {
-//       const reader = new FileReader();
-//       // previewDefaultText.style.display = "none"
-//       outboximg.style.display = "block"
-//       console.log(outboximg)
-
-//       reader.readAsDataURL(file)
-
-//       outboximg.setAttribute("src", reader.result);
-//       reader.addEventListener("load", () => {
-//       });
-
-//   }
-// })
-
 signup.addEventListener ('click', (e) => {
   e.preventDefault();
   console.log("haha")
@@ -88,14 +68,23 @@ signup.addEventListener ('click', (e) => {
 }
 
 function addToDb(email, password, fullname, phone, picture, res) {
-  db.collection('customer')
-  .add({
-      email: email,
-      password: password,
-      name: fullname,
-      phone_number: phone,
-      picture: picture
-  })
+  // var userSnap = firebaseApp.database().ref('users/'+ auth.currentUser)
+// console.log(userSnap)
+db.collection('customer').doc(res.user.uid).set({
+  email: email,
+  password: password,
+  name: fullname,
+  phone_number: phone,
+  picture: picture
+})
+  // db.collection('customer')
+  // .add({
+  //     email: email,
+  //     password: password,
+  //     name: fullname,
+  //     phone_number: phone,
+  //     picture: picture
+  // })
   .then((docRef) => {
       console.log("Document written with ID: ", docRef.id);
       onSuccessRegister(email, password, res);
