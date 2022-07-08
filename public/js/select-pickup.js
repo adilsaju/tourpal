@@ -53,11 +53,11 @@ add4.addEventListener ('click', () => {
         customer: logged_in_email,
         destination: city,
         driver: driverSelected,
-        enddate: finishDateTime,
+        enddate: new Date(finishDateTime),
         experience_selected: experienceSelected,
         guest_count: parseInt(noOfPeople),
         is_cancelled: false,
-        startdate: departDateTime
+        startdate: new Date(departDateTime)
     })
     .then((docRef) => {
         console.log("Document written with ID: ", docRef.id);
