@@ -53,6 +53,7 @@ function onSuccessLogin(email, password, res) {
 
     sessionStorage.setItem('is_logged_in', true);
     sessionStorage.setItem('logged_in_email', email);
+    sessionStorage.setItem('logged_in_uid', res.user.uid);
     sessionStorage.setItem('logged_in_password', password);
     sessionStorage.setItem('user_type', "customer");
 

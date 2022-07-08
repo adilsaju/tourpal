@@ -86,7 +86,8 @@ db.collection('customer').doc(res.user.uid).set({
   //     picture: picture
   // })
   .then((docRef) => {
-      console.log("Document written with ID: ", docRef.id);
+      // console.log("Document written with ID: ", docRef.id);
+      console.log("Document written with ID: ")
       onSuccessRegister(email, password, res);
 
   })

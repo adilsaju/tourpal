@@ -11,25 +11,32 @@ const firebaseApp = firebase.initializeApp({
 });
 const db = firebaseApp.firestore();
 
-add3.addEventListener ('click', () => {
-    // if ( temp1.checkValidity() != true)
-    // {
-    //     return;
-    // }
-  
-    console.log("clicked add");  
-  
-    // src.style.visibility = "visible"
-    sessionStorage.setItem("driverSelected","Jordan Marlin");
+add3.addEventListener('click', () => {
+  // if ( temp1.checkValidity() != true)
+  // {
+  //     return;
+  // }
+
+  console.log("clicked add");
+
+  // src.style.visibility = "visible"
+  sessionStorage.setItem("driverSelected", "Jordan Marlin");
 
 
-    window.location.href = `/public/templates/customer/select-pickup.html`
+  window.location.href = `/public/templates/customer/select-pickup.html`
 
-  });
-  
-  window.addEventListener("load", yourfunction, false); 
+});
 
-  function yourfunction() {
+window.addEventListener("load", yourfunction, false);
+
+function yourfunction() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const exp_id = urlParams.get('exp_id');
+  console.log("============")
+  console.log(exp_id)
+
+
+
   const selected_info = document.querySelector("#selected_info")
   const driver_list = document.querySelector("#driver_list")
   const selection = document.querySelector("#selection")
@@ -46,32 +53,36 @@ add3.addEventListener ('click', () => {
   
   </ul>
   `
-  
 
-  db.collection("driver").get().then((querySnapshot) => {
+  const categoryDocRef = db
+    .collection('experience')
+    .doc(exp_id);
+  console.log(categoryDocRef)
+
+  db.collection("driver").where('experiences_covered', 'array-contains', categoryDocRef).get().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
-        // doc.data() is never undefined for query doc snapshots
-        console.log(doc.id, " => ", doc.data());
-        const pdiv = document.createElement("div")
-        const input = document.createElement("input")
-        
-        input.setAttribute("type", "radio")
-        input.setAttribute("name", "ce")
-        const label = document.createElement("label")
-        // const img = document.createElement("img")
-        // img.setAttribute("src", `data:image/jpeg;base64,${doc.data().picture}`)
-        
-        label.innerHTML = `${doc.data().name}`
-  
-        console.log(pdiv)
-        pdiv.appendChild(input)
-        pdiv.appendChild(label)
-        // pdiv.appendChild(img)
-  
-  
-        driver_list.insertBefore(pdiv, selection)
-  
-  
+      // doc.data() is never undefined for query doc snapshots
+      console.log(doc.id, " => ", doc.data());
+      const pdiv = document.createElement("div")
+      const input = document.createElement("input")
+
+      input.setAttribute("type", "radio")
+      input.setAttribute("name", "ce")
+      const label = document.createElement("label")
+      // const img = document.createElement("img")
+      // img.setAttribute("src", `data:image/jpeg;base64,${doc.data().picture}`)
+
+      label.innerHTML = `${doc.data().name}`
+
+      console.log(pdiv)
+      pdiv.appendChild(input)
+      pdiv.appendChild(label)
+      // pdiv.appendChild(img)
+
+
+      driver_list.insertBefore(pdiv, selection)
+
+
     });
   });
-  }
+}

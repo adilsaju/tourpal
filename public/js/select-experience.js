@@ -39,9 +39,11 @@ const exps = document.querySelector("#exps")
 
 db.collection("experience").get().then((querySnapshot) => {
   querySnapshot.forEach((doc) => {
+    // console.log(doc)
       // doc.data() is never undefined for query doc snapshots
       console.log(doc.id, " => ", doc.data());
       const pdiv = document.createElement("article")
+      pdiv.setAttribute("id", doc.id )
       const h2 = document.createElement("h2")
       const p = document.createElement("p")
       const button = document.createElement("button")
@@ -72,7 +74,7 @@ db.collection("experience").get().then((querySnapshot) => {
 });
 }
 
-function pick_fn() {
+function pick_fn(e) {
 
 // const nextBtn = document.querySelectorAll("button")
 // nextBtn[0].addEventListener ('click', () => {
@@ -81,12 +83,13 @@ function pick_fn() {
   //     return;
   // }
 
-  console.log("clicked add");  
+  console.log("clicked add");
+  console.log(e.target.parentElement.id);  
 
   // driver_list.style.visibility = "visible"
-  sessionStorage.setItem('experienceSelected', "Cooking Show");
+  sessionStorage.setItem('experienceSelected', e.target.parentElement.id);
 
-  window.location.href = `/public/templates/customer/select-driver.html`
+  window.location.href = `/public/templates/customer/select-driver.html?exp_id=${e.target.parentElement.id}`
 
 // });
 
