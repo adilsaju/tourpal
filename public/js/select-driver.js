@@ -30,6 +30,15 @@ function pick_fn(e) {
 
 window.addEventListener("load", yourfunction, false);
 
+function getExpNameFromDb(id) {
+
+
+
+  }
+
+
+
+
 function yourfunction() {
   const urlParams = new URLSearchParams(window.location.search);
   const exp_id = urlParams.get('exp_id');
@@ -42,18 +51,30 @@ function yourfunction() {
   const driver_list = document.querySelector("#driver_list")
   const selection = document.querySelector("#selection")
 
-  selected_info.innerHTML = `
-  <ul>
-  <li  class="location-experiences" >${sessionStorage.getItem('city')}</li>
-  <li>${sessionStorage.getItem('departDateTime')}</li>
-  <li>${sessionStorage.getItem('finishDateTime')}</li>
-  <li>${sessionStorage.getItem('noOfPeople')}</li>
-  <li>${sessionStorage.getItem('experienceSelected')}</li>
-  <li><a href="#"><i class="fas fa-pen"></i></a></li>
 
-  
-  </ul>
-  `
+  const snapshot = db
+    .collection('experience')
+    .doc(exp_id).get().then((querySnapshot)=>{
+      const data = querySnapshot.data();
+      console.log("========================")
+      console.log(data.name)
+
+      selected_info.innerHTML = `
+      <ul>
+      <li  class="location-experiences" >${sessionStorage.getItem('city')}</li>
+      <li>${sessionStorage.getItem('departDateTime')}</li>
+      <li>${sessionStorage.getItem('finishDateTime')}</li>
+      <li>${sessionStorage.getItem('noOfPeople')}</li>
+      <li>${data.name}</li>
+      <li><a href="#"><i class="fas fa-pen"></i></a></li>
+    
+      
+      </ul>
+      `
+    });
+
+
+
 
   const categoryDocRef = db
     .collection('experience')
