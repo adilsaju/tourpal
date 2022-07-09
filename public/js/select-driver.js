@@ -96,6 +96,38 @@ function yourfunction() {
       pdiv.setAttribute("id", doc.id )
       // const input = document.createElement("input")
       const button = document.createElement("button")
+
+      const image = document.createElement("img")
+      image.setAttribute("src", doc.data().picture)
+
+      const divr = document.createElement("div")
+      if (doc.data().rating === 5)
+      {
+        divr.innerHTML = `&starf; &starf; &starf; &starf; &starf;`
+
+      }
+      else if  (doc.data().rating === 4)
+      {
+        divr.innerHTML = `&starf; &starf; &starf; &starf; &star;`
+
+      }
+      else if  (doc.data().rating === 3)
+      {
+        divr.innerHTML = `&starf; &starf; &starf; &star; &star;`
+
+      }
+      else if  (doc.data().rating === 2)
+      {
+        divr.innerHTML = `&starf; &starf; &star; &star; &star;`
+
+      }
+      else {
+
+        divr.innerHTML = `&starf; &star; &star; &star; &star;`
+      }
+
+
+
       button.setAttribute("type", "button")
       button.setAttribute("name", "ce")
       button.setAttribute("class", "add2")
@@ -112,6 +144,8 @@ function yourfunction() {
 
       console.log(pdiv)
       // pdiv.appendChild(input)
+      pdiv.appendChild(image)
+      pdiv.appendChild(divr)
       pdiv.appendChild(label)
       pdiv.appendChild(button)
 
