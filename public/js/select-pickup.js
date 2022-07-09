@@ -52,21 +52,42 @@ const saveData = () => {
   let user_type = sessionStorage.getItem('user_type');
 
 
+  const driverRef = db
+    .collection('driver')
+    .doc(driverSelected);
+  console.log("==========================")
+  console.log(driverRef)
+  
+  const customerRef = db
+  .collection('customer')
+  .doc(logged_in_uid);
+console.log(customerRef)
+
+const expRef = db
+.collection('experience')
+.doc(experienceSelected);
+console.log(expRef)
+
+
+
   db.collection('trip')
     .add({
       bookdate: new Date(),
-      //TODO actual reference
-      customer: logged_in_uid,
+      customer: customerRef,
       destination: city,
-      driver: driverSelected,
+      driver: driverRef,
       enddate: new Date(finishDateTime),
-      experience_selected: experienceSelected,
+      experience_selected: expRef,
       guest_count: parseInt(noOfPeople),
       is_cancelled: false,
       startdate: new Date(departDateTime)
     })
     .then((docRef) => {
       console.log("Document written with ID: ", docRef.id);
+      //trip id save to local
+      sessionStorage.setItem("trip_id" , docRef.id)
+
+
       console.log(db.collection('trip').doc(logged_in_uid))
 
       db.collection('customer').doc(logged_in_uid)

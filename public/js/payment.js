@@ -17,38 +17,45 @@ const firebaseApp = firebase.initializeApp({
     window.onload = function() {
     const confirmed_trip = document.querySelector("#confirmed_trip")
   
-    
-    // let city = sessionStorage.getItem("city")
-    db.collection("trip").where("destination", "==", "North Vancouver").get().then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-          // doc.data() is never undefined for query doc snapshots
-          console.log(doc.id, " => ", doc.data());
-          const pdiv = document.createElement("div")
-          
-          const label = document.createElement("label")
-          label.innerHTML = `${doc.data().destination}`
-          const label2 = document.createElement("label")
-          label2.innerHTML = `${sessionStorage.getItem("customerPickupLocation")}`
-          const label3 = document.createElement("label")
-          label3.innerHTML = `${sessionStorage.getItem("departDateTime")}`
-          const label4 = document.createElement("label")
-          label4.innerHTML = `${sessionStorage.getItem("driverSelected")}`
+    // db.collection("trip").doc(`${sessionStorage.getItem("city")}`)
 
-          console.log(pdiv)
-          pdiv.append("Destination")
-          pdiv.appendChild(label)
-          pdiv.append("Pickup from:")
-          pdiv.appendChild(label2)
-          pdiv.append("Time:")
-          pdiv.appendChild(label3)
-          pdiv.append("Driver:")
-          pdiv.appendChild(label4)
 
-    
-    
-          confirmed_trip.appendChild(pdiv)
-    
-    
-      });
+    const snapshot = db
+    .collection('trip')
+    .doc(`${sessionStorage.getItem("city")}`).get().then((doc)=>{
+      // const data = doc.data();
+
+        // doc.data() is never undefined for query doc snapshots
+        console.log(doc.id, " => ", doc.data());
+        const pdiv = document.createElement("div")
+        
+        // const label = document.createElement("label")
+        //TODO: destination undefined
+        // label.innerHTML = `${doc.data().destination}`
+        const label2 = document.createElement("label")
+        label2.innerHTML = `${sessionStorage.getItem("customerPickupLocation")}`
+        const label3 = document.createElement("label")
+        label3.innerHTML = `${sessionStorage.getItem("departDateTime")}`
+        const label4 = document.createElement("label")
+        label4.innerHTML = `${sessionStorage.getItem("driverSelected")}`
+
+        console.log(pdiv)
+        // pdiv.append("Destination")
+        // pdiv.appendChild(label)
+        pdiv.append("Pickup from:")
+        pdiv.appendChild(label2)
+        pdiv.append("Time:")
+        pdiv.appendChild(label3)
+        pdiv.append("Driver:")
+        pdiv.appendChild(label4)
+
+  
+  
+        confirmed_trip.appendChild(pdiv)
+  
+
     });
+
+
+
     }
