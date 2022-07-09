@@ -93,6 +93,7 @@ console.log(expRef)
       db.collection('customer').doc(logged_in_uid)
         .update({
           //or set
+          //TODO: add coord to trips table also
           current_location: new firebase.firestore.GeoPoint(parseFloat(customerLat), parseFloat(customerLng))
         })
         .then((docRef) => {
