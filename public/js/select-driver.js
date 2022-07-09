@@ -11,21 +11,22 @@ const firebaseApp = firebase.initializeApp({
 });
 const db = firebaseApp.firestore();
 
-add3.addEventListener('click', () => {
-  // if ( temp1.checkValidity() != true)
+
+
+function pick_fn(e) {
+    // if ( temp1.checkValidity() != true)
   // {
   //     return;
   // }
 
   console.log("clicked add");
-
   // src.style.visibility = "visible"
-  sessionStorage.setItem("driverSelected", "Jordan Marlin");
-
+  // sessionStorage.setItem("driverSelected", "Jordan Marlin");
+  sessionStorage.setItem('driverSelected', e.target.parentElement.id);
 
   window.location.href = `/public/templates/customer/select-pickup.html`
+}
 
-});
 
 window.addEventListener("load", yourfunction, false);
 
@@ -61,13 +62,27 @@ function yourfunction() {
 
   db.collection("driver").where('experiences_covered', 'array-contains', categoryDocRef).get().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
+
+
+
+
+
+
+
       // doc.data() is never undefined for query doc snapshots
       console.log(doc.id, " => ", doc.data());
       const pdiv = document.createElement("div")
-      const input = document.createElement("input")
+      pdiv.setAttribute("id", doc.id )
+      // const input = document.createElement("input")
+      const button = document.createElement("button")
+      button.setAttribute("type", "button")
+      button.setAttribute("name", "ce")
+      button.setAttribute("class", "add2")
+      button.onclick=pick_fn
+      button.innerText=`Pick`
 
-      input.setAttribute("type", "radio")
-      input.setAttribute("name", "ce")
+      // input.setAttribute("type", "radio")
+      // input.setAttribute("name", "ce")
       const label = document.createElement("label")
       // const img = document.createElement("img")
       // img.setAttribute("src", `data:image/jpeg;base64,${doc.data().picture}`)
@@ -75,8 +90,10 @@ function yourfunction() {
       label.innerHTML = `${doc.data().name}`
 
       console.log(pdiv)
-      pdiv.appendChild(input)
+      // pdiv.appendChild(input)
       pdiv.appendChild(label)
+      pdiv.appendChild(button)
+
       // pdiv.appendChild(img)
 
 
