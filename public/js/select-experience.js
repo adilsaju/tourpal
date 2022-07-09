@@ -11,7 +11,9 @@ const firebaseApp = firebase.initializeApp({
 });
 const db = firebaseApp.firestore();
 // const auth = firebaseApp.auth();
-
+//const Datee = sessionStorage.getItem(('departDateTime'()));
+const departTime = new Date(sessionStorage.getItem(('departDateTime')));
+const arriveTime = new Date(sessionStorage.getItem(('finishDateTime')));
 // var abc=123
 
 window.addEventListener("load", yourfunction, false); 
@@ -23,8 +25,8 @@ function yourfunction() {
   selected_info.innerHTML = `
   <ul>
   <li class="location-experiences">${sessionStorage.getItem('city')}</li>
-  <li>${sessionStorage.getItem('departDateTime')}</li>
-  <li>${sessionStorage.getItem('finishDateTime')}</li>
+  <li>${departTime.toDateString(sessionStorage.getItem(('departDateTime')))}</li>
+  <li>${arriveTime.toDateString(sessionStorage.getItem('finishDateTime'))}</li>
   <li>${sessionStorage.getItem('noOfPeople')}</li>
   <li><a href="#"><i class="fas fa-pen"></i></a></li>
   
