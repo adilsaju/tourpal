@@ -100,6 +100,9 @@ function yourfunction() {
       const image = document.createElement("img")
       image.setAttribute("src", doc.data().picture)
 
+      const div_no = document.createElement("div")
+      div_no.innerHTML = `Number of trips done: ${doc.data().number_of_trips}`
+
       const divr = document.createElement("div")
       if (doc.data().rating === 5)
       {
@@ -145,6 +148,7 @@ function yourfunction() {
       console.log(pdiv)
       // pdiv.appendChild(input)
       pdiv.appendChild(image)
+      pdiv.appendChild(div_no)
       pdiv.appendChild(divr)
       pdiv.appendChild(label)
       pdiv.appendChild(button)
