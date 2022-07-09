@@ -76,7 +76,7 @@ const saveData = () => {
         })
         .then((docRef) => {
           // console.log("Document written with ID: ", docRef.id);
-          // window.location.pathname = 'public/templates/customer/payment.html'
+          window.location.pathname = 'public/templates/customer/payment.html'
         })
         .catch((error) => {
           console.error("Error adding document: ", error);
