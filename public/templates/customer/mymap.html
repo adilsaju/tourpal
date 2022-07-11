@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maps</title>
+    <link rel='stylesheet' type='text/css' href='https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.53.0/maps/maps.css'>
+    <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.53.0/maps/maps-web.min.js"></script>
+    <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.53.0/services/services-web.min.js"></script>
+</head>
+<body style="width: 100%; height: 100%; margin: 0; padding: 0;">
+
+    <input type="text" id="query" value="">
+    <button onclick="search()">SEARCH</button>
+        <div id="mymap" style="width: 90vh; height: 90vh;">My Map is visible</div>
+        <script>
+            let check = 1;
+            var APIKEY = "T6OoEaHvVvVk1vZSc76hPAPxsddIx8GS";
+            var BC = [-123.117535,49.283400]
+            var map = tt.map({
+            key: APIKEY,
+            center: BC,
+            zoom: 10,
+            container: "mymap",
+            style: 'tomtom://vector/1/basic-main'
+        });
+        
+        var moveMap = function(lnglat){
+            map.flyTo({
+                center:lnglat,
+                zoom:14
+            })
+            
+        }
+
+        map.on('click',function(event){
+            var touchingLayer = map.queryRenderedFeatures(event.point)[0]
+
+            if(touchingLayer.properties.id === 'POI'){
+                displayPOIInformation(touchingLayer.properties.id)
+            }
+
+        })
+
+        var handleResults = function(result){
+                if(result.results){
+                    moveMap(result.results[0].position)
+                    //marker.remove(result.results[1].position)
+                   
+                    var marker = new tt.Marker().setLngLat(result.results[0].position).addTo(map).setDraggable([shouldBeDraggable=true]);
+                    //var marker2 = new tt.Marker().setLngLat(result.results[1].position).addTo(map);
+                    // var marker3 = new tt.Marker().setLngLat(result.results[2].position).addTo(map);
+                    // marker.remove();
+                }
+        }
+        var search = function(){
+            tt.services.fuzzySearch({
+                key:APIKEY,
+                query: document.getElementById("query").value,
+                boundingBox: map.getBounds(),
+                
+            }     
+            ).go().then(handleResults)           
+                   
+        }
+        </script>
+</body>
+</html>
+
+<!-- 53.726669 -127.647621 -->
+
+<!-- <body style="width: 100%; height: 100%; margin: 0; padding: 0;">
+    <div id="map" style="width: 100%; height: 100%;"></div>
+    <script>
+       
+   </script> -->
