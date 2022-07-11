@@ -52,31 +52,53 @@ const saveData = () => {
   let user_type = sessionStorage.getItem('user_type');
 
 
+  const driverRef = db
+    .collection('driver')
+    .doc(driverSelected);
+  console.log("==========================")
+  console.log(driverRef)
+  
+  const customerRef = db
+  .collection('customer')
+  .doc(logged_in_uid);
+console.log(customerRef)
+
+const expRef = db
+.collection('experience')
+.doc(experienceSelected);
+console.log(expRef)
+
+
+
   db.collection('trip')
     .add({
       bookdate: new Date(),
-      //TODO actual reference
-      customer: logged_in_uid,
+      customer: customerRef,
       destination: city,
-      driver: driverSelected,
+      driver: driverRef,
       enddate: new Date(finishDateTime),
-      experience_selected: experienceSelected,
+      experience_selected: expRef,
       guest_count: parseInt(noOfPeople),
       is_cancelled: false,
       startdate: new Date(departDateTime)
     })
     .then((docRef) => {
       console.log("Document written with ID: ", docRef.id);
+      //trip id save to local
+      sessionStorage.setItem("trip_id" , docRef.id)
+
+
       console.log(db.collection('trip').doc(logged_in_uid))
 
       db.collection('customer').doc(logged_in_uid)
         .update({
           //or set
+          //TODO: add coord to trips table also
           current_location: new firebase.firestore.GeoPoint(parseFloat(customerLat), parseFloat(customerLng))
         })
         .then((docRef) => {
           // console.log("Document written with ID: ", docRef.id);
-          // window.location.pathname = 'public/templates/customer/payment.html'
+          window.location.pathname = 'public/templates/customer/payment.html'
         })
         .catch((error) => {
           console.error("Error adding document: ", error);
@@ -88,3 +110,38 @@ const saveData = () => {
     })
 
 }
+
+
+const x = document.querySelector("#error_box")
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition, showError);
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPosition(position) {
+  document.getElementById('lat').value = position.coords.latitude
+  document.getElementById('lng').value = position.coords.longitude;
+}
+
+function showError(error) {
+  switch(error.code) {
+    case error.PERMISSION_DENIED:
+      x.innerHTML = "User denied the request for Geolocation."
+      break;
+    case error.POSITION_UNAVAILABLE:
+      x.innerHTML = "Location information is unavailable."
+      break;
+    case error.TIMEOUT:
+      x.innerHTML = "The request to get user location timed out."
+      break;
+    case error.UNKNOWN_ERROR:
+      x.innerHTML = "An unknown error occurred."
+      break;
+  }
+}
+
+get_loc.onclick=getLocation

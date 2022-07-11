@@ -6,3 +6,13 @@
     border: 1px solid grey;
     border-radius: 2rem;
 }
+
+#driver_list img {
+    width: 15rem;
+    height: 15rem;
+    border-radius: 50%;
+}
+
+label {
+    text-transform: capitalize;
+}
