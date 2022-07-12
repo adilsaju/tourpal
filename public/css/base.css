@@ -167,8 +167,9 @@ header nav {
     background-color: #ccc;
 }
 .footer-section p, .register-footer p{
-    padding: 1rem 3%;
+    padding: 0 0 0 1rem;
 }
+
 
 
 @media screen and (min-width: 1000px) {

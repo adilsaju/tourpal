@@ -179,7 +179,7 @@ form{
 }
 
 .register_form_image {
-    padding-right: 1rem;
+    padding: 1rem;
 }
 .register_form_image img{
     border-radius: 10px;
@@ -224,9 +224,9 @@ form{
         white-space: nowrap;
         width: 1px;
         }
-        .register-footer{
+        /* .register-footer{
             margin-top:10rem;
-        }
+        } */
  }
 
  @media screen and (min-width:750px) {
