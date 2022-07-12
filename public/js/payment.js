@@ -36,8 +36,10 @@ const firebaseApp = firebase.initializeApp({
         label2.innerHTML = `${sessionStorage.getItem("customerLocation")}`
         const label3 = document.createElement("label")
         label3.innerHTML = `${sessionStorage.getItem("departDateTime")}`
+        const label5 = document.createElement("label")
+        label5.innerHTML = `${sessionStorage.getItem("noOfPeople")}`
         const label4 = document.createElement("label")
-        label4.innerHTML = `${sessionStorage.getItem("driverSelected")}`
+        label4.innerHTML = `${sessionStorage.getItem("driverSelected")}`//change to regular name
 
         console.log(pdiv)
         // pdiv.append("Destination")
@@ -46,6 +48,8 @@ const firebaseApp = firebase.initializeApp({
         pdiv.appendChild(label2)
         pdiv.append("Time:")
         pdiv.appendChild(label3)
+        pdiv.append("Number of people:")
+        pdiv.appendChild(label5)
         pdiv.append("Driver:")
         pdiv.appendChild(label4)
 
