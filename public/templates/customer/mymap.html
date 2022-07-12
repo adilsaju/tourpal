@@ -8,11 +8,13 @@
     <link rel='stylesheet' type='text/css' href='https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.53.0/maps/maps.css'>
     <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.53.0/maps/maps-web.min.js"></script>
     <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.53.0/services/services-web.min.js"></script>
+    <link rel='stylesheet' type='text/css' href='https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.53.0/plugins/SearchBox/SearchBox.css'>
 </head>
 <body style="width: 100%; height: 100%; margin: 0; padding: 0;">
 
     <input type="text" id="query" value="">
     <button onclick="search()">SEARCH</button>
+    <button onclick="getLocation()">Current Location</button>
         <div id="mymap" style="width: 90vh; height: 90vh;">My Map is visible</div>
         <script>
             let check = 1;
@@ -26,34 +28,76 @@
             style: 'tomtom://vector/1/basic-main'
         });
         
+        map.on('load', function(){
+            document.querySelector('.tt-side-panel__header').appendChild(ttSearchBox.getSearchBoxHTML());
+        })
+        // var searchBox = new tt.plugins.SearchBox(tt.services, searchBoxOptions);
+        
+        tt.services.autocomplete({
+            
+            key:APIKEY,
+            language:'en-US',
+            container: "query",
+        })
+
+        function callbackFn(response) {
+                    console.log(response);
+                    console.log(response.addresses[0].address.freeformAddress)
+                    document.getElementById("query").value = response.addresses[0].address.freeformAddress;
+        }
+        var revgeo = function(lng,ltd){    
+                
+                tt.services.reverseGeocode({
+                    key: APIKEY,
+                    position: [lng,ltd],
+                    }
+                    
+                    ).go().then(callbackFn);
+                    //alert(position)
+                }
         var moveMap = function(lnglat){
             map.flyTo({
                 center:lnglat,
-                zoom:14
+                zoom:17
             })
             
         }
 
-        map.on('click',function(event){
-            var touchingLayer = map.queryRenderedFeatures(event.point)[0]
+       // map.touchPitch.enable();
+        map.addControl(new tt.GeolocateControl({
+                positionOptions: {
+                    enableHighAccuracy: true
+                },
+                trackUserLocation: true
+                
+        }));    
+                    
 
-            if(touchingLayer.properties.id === 'POI'){
-                displayPOIInformation(touchingLayer.properties.id)
-            }
+        var nav = new tt.NavigationControl({});
+            map.addControl(nav, 'top-left');
+
+
+        map.on('click',function(event){
+            var touchingLayer = map.queryRenderedFeatures(event.point)
+            console.log(touchingLayer)
+          
 
         })
 
         var handleResults = function(result){
                 if(result.results){
                     moveMap(result.results[0].position)
+                    console.log(result)
                     //marker.remove(result.results[1].position)
                    
                     var marker = new tt.Marker().setLngLat(result.results[0].position).addTo(map).setDraggable([shouldBeDraggable=true]);
+                    
                     //var marker2 = new tt.Marker().setLngLat(result.results[1].position).addTo(map);
                     // var marker3 = new tt.Marker().setLngLat(result.results[2].position).addTo(map);
                     // marker.remove();
                 }
         }
+
         var search = function(){
             tt.services.fuzzySearch({
                 key:APIKEY,
@@ -61,9 +105,49 @@
                 boundingBox: map.getBounds(),
                 
             }     
+            
             ).go().then(handleResults)           
-                   
+     
         }
+
+                function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition, showError);
+        } else { 
+            x.innerHTML = "Geolocation is not supported by this browser.";
+        }
+        }
+
+            function showPosition(position) {
+      
+            var poslat = position.coords.latitude
+            var poslan = position.coords.longitude;
+            arr = [poslan,poslat]
+            moveMap(arr)
+            var marker = new tt.Marker().setLngLat(arr).addTo(map);
+            revgeo(poslan,poslat);
+            }
+
+            //49.2434453 -123.0800022
+
+            function showError(error) {
+            switch(error.code) {
+                case error.PERMISSION_DENIED:
+                
+                break;
+                case error.POSITION_UNAVAILABLE:
+                // x.innerHTML = "Location information is unavailable."
+                break;
+                case error.TIMEOUT:
+                // x.innerHTML = "The request to get user location timed out."
+                break;
+                case error.UNKNOWN_ERROR:
+                // x.innerHTML = "An unknown error occurred."
+                break;
+            }
+}
+
+
         </script>
 </body>
 </html>
