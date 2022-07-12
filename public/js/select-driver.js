@@ -148,9 +148,10 @@ function yourfunction() {
       console.log(pdiv)
       // pdiv.appendChild(input)
       pdiv.appendChild(image)
+      pdiv.appendChild(label)
       pdiv.appendChild(div_no)
       pdiv.appendChild(divr)
-      pdiv.appendChild(label)
+      
       pdiv.appendChild(button)
 
       // pdiv.appendChild(img)
