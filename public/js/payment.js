@@ -33,7 +33,7 @@ const firebaseApp = firebase.initializeApp({
         //TODO: destination undefined
         // label.innerHTML = `${doc.data().destination}`
         const label2 = document.createElement("label")
-        label2.innerHTML = `${sessionStorage.getItem("customerPickupLocation")}`
+        label2.innerHTML = `${sessionStorage.getItem("customerLocation")}`
         const label3 = document.createElement("label")
         label3.innerHTML = `${sessionStorage.getItem("departDateTime")}`
         const label4 = document.createElement("label")

@@ -25,6 +25,11 @@ add4.addEventListener('click', () => {
   // sessionStorage.setItem('customerPickupLocation', 'Burnaby' )
   sessionStorage.setItem('customerLat', finalLat)
   sessionStorage.setItem('customerLng', finalLng)
+  if(chk === 1) {
+    sessionStorage.setItem("customerLocation" , finalpick)
+  }else{
+    sessionStorage.setItem("customerLocation" , finalpicksearch)
+  }
   //SAVE ALL SESSION DATA TO FIREBASE===
   saveData();
 
@@ -40,6 +45,9 @@ var APIKEY = "T6OoEaHvVvVk1vZSc76hPAPxsddIx8GS";
 var BC = [-123.117535,49.283400]
 var finalLng;
 var finalLat;
+var finalpick;
+var chk = 0;
+var finalpicksearch;
 var map = tt.map({
 key: APIKEY,
 center: BC,
@@ -52,6 +60,8 @@ function callbackFn(response) {
         console.log(response);
         console.log(response.addresses[0].address.freeformAddress)
         document.getElementById("query").value = response.addresses[0].address.freeformAddress;
+        chk = 1;
+        finalpick = response.addresses[0].address.freeformAddress;
 }
 var revgeo = function(lng,ltd){    
     
@@ -101,6 +111,7 @@ console.log(result)
 
         finalLat = result.results[0].position.lat
         finalLng = result.results[0].position.lng
+        finalpicksearch = result.results[0].address.freeformAddress
         //marker.remove(result.results[1].position)
        
         var marker = new tt.Marker().setLngLat(result.results[0].position).addTo(map).setDraggable([shouldBeDraggable=false]);
@@ -216,7 +227,7 @@ console.log(expRef)
       console.log("Document written with ID: ", docRef.id);
       //trip id save to local
       sessionStorage.setItem("trip_id" , docRef.id)
-
+      
 
       console.log(db.collection('trip').doc(logged_in_uid))
 
