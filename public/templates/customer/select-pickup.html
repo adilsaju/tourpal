@@ -37,18 +37,21 @@
                 </ul>
             </nav>
         </header>
-            
-            <div style="width: 100%; height: 100%; margin: 0; padding: 0;">
-            
+        <h1>Select pickup location</h1>
+            <div class="search" style="text-align: center;">
+                
                 <input type="text" id="query" value="">
-                <button onclick="search()">SEARCH</button>
-                <button onclick="getLocation()">Current Location</button>
-                    <div id="mymap" style="width: 90vh; height: 90vh;">My Map is visible</div>
-                    <!-- <script>
-                       
+                <button onclick="search()">SEARCH</button> <span class="Or">Or</span> <button onclick="getLocation()">Use Current Location</button>
+                
+                <br>
+                <button class="confirm"  id="add4" >Confirm pickup</button>  
+                <br>
+                    <div id="mymap" style="width: 130vh; height: 80vh; margin: auto;">My Map is visible</div>
+              
+                     
             
             
-                    </script> -->
+                 
                 </div>
             </html>
 
@@ -56,7 +59,7 @@
 
             <div>
                 <!-- <input type="submit" value="Add" id="add"> -->
-                <button  id="add4">Next</button>
+                
             </div>
         </div>
 
