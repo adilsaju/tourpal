@@ -25,7 +25,6 @@ add4.addEventListener('click', () => {
   // sessionStorage.setItem('customerPickupLocation', 'Burnaby' )
   sessionStorage.setItem('customerLat', finalLat)
   sessionStorage.setItem('customerLng', finalLng)
-  alert (finalLat)
   //SAVE ALL SESSION DATA TO FIREBASE===
   saveData();
 
@@ -104,7 +103,7 @@ console.log(result)
         finalLng = result.results[0].position.lng
         //marker.remove(result.results[1].position)
        
-        var marker = new tt.Marker().setLngLat(result.results[0].position).addTo(map).setDraggable([shouldBeDraggable=true]);
+        var marker = new tt.Marker().setLngLat(result.results[0].position).addTo(map).setDraggable([shouldBeDraggable=false]);
         
         //var marker2 = new tt.Marker().setLngLat(result.results[1].position).addTo(map);
         // var marker3 = new tt.Marker().setLngLat(result.results[2].position).addTo(map);
