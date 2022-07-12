@@ -42,6 +42,11 @@ main img{
     background-color: rgb(250, 246, 246);
     border-radius: 25px;
     padding: 1rem 2%;
+    text-align: center;
+}
+
+#driver_list > div > label{
+    font-weight: bolder;
 }
 
 #driver_list > div > button{
