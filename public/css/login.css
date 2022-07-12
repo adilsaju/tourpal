@@ -8,8 +8,6 @@ body {
     margin: 0;
     padding: 0;
     line-height: 1.5;
-
-    height:100vh;
 }
 
 h1, h2, h3, h4, h5, h6{
@@ -34,6 +32,10 @@ header{
 }
 main{
     padding: 1rem;
+    
+}
+.main_landing{
+    height:100vh;
 }
 img{
     width:100%;
