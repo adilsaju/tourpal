@@ -32,22 +32,37 @@ signup.addEventListener ('click', (e) => {
     const phone = document.getElementById('phone').value
     const picture = document.getElementById('picture').files[0]
     var reader = new FileReader();
-    reader.readAsDataURL(picture); 
-    // IMP: MAx 1MB upload supported
-    //FirebaseError: The value of property "picture" is longer than 1048487 bytes.
-    reader.onloadend = function() {
-      let base64data = reader.result;                
-      console.log(base64data);
-      if (password !== password2){
-        alert("passwords not same - error")
-        return
+    try{
+      reader.readAsDataURL(picture); 
+
+      reader.onloadend = function() {
+        let base64data = reader.result;                
+        console.log(base64data);
+        if (password !== password2){
+          alert("passwords not same - error")
+          return
+        }
+    
+        auth.createUserWithEmailAndPassword(email, password)
+        .then((res) => {
+            console.log(res.user)
+            // console.log(picture)
+            addToDb(email, password, fullname, phone, base64data, res);
+        })
+        .catch((err) => {
+            alert(err.message)
+            console.log(err.code)
+            console.log(err.message)
+        })
       }
-  
+    }
+    catch (err)
+    {
       auth.createUserWithEmailAndPassword(email, password)
       .then((res) => {
           console.log(res.user)
           // console.log(picture)
-          addToDb(email, password, fullname, phone, base64data, res);
+          addToDb(email, password, fullname, phone, "", res);
       })
       .catch((err) => {
           alert(err.message)
@@ -55,6 +70,9 @@ signup.addEventListener ('click', (e) => {
           console.log(err.message)
       })
     }
+    // IMP: MAx 1MB upload supported
+    //FirebaseError: The value of property "picture" is longer than 1048487 bytes.
+
   });
 
   window.onload = function() {
