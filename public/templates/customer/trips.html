@@ -40,54 +40,54 @@
             <h3>Upcomings</h3>
             <article>
                 <h2>
-                    <a href="" class="entry_link">Lorem, ipsum dolor.</a>
+                    <a href="/public/templates/customer/trips-info.html" class="entry_link">Lorem, ipsum dolor.</a>
                     </h2>
-                    <div class="feature-image"><img src="https://picsum.photos/800/800" alt=""></div>
+                    <div class="feature-image"><img src="https://picsum.photos/800/800?random=118" alt=""></div>
             </article>
             <article>
                 <h2>
-                    <a href="" class="entry_link">Inventore, dolor blanditiis?</a>
+                    <a href="/public/templates/customer/trips-info.html" class="entry_link">Inventore, dolor blanditiis?</a>
                     </h2>
-                    <div class="feature-image"><img src="https://picsum.photos/800/800" alt=""></div>
+                    <div class="feature-image"><img src="https://picsum.photos/800/800?random=30" alt=""></div>
             </article>
             <article>
                 <h2>
-                    <a href="" class="entry_link">Dolores, dicta excepturi.</a>
+                    <a href="/public/templates/customer/trips-info.html" class="entry_link">Dolores, dicta excepturi.</a>
                     </h2>
-                    <div class="feature-image"><img src="https://picsum.photos/800/800" alt=""></div>
+                    <div class="feature-image"><img src="https://picsum.photos/800/800?random=128" alt=""></div>
             </article>
             <article>
                 <h2>
-                    <a href="" class="entry_link">Fugiat, qui quidem?</a>
+                    <a href="/public/templates/customer/trips-info.html" class="entry_link">Fugiat, qui quidem?</a>
                     </h2>
-                    <div class="feature-image"><img src="https://picsum.photos/800/800" alt=""></div>
+                    <div class="feature-image"><img src="https://picsum.photos/800/800?random=13" alt=""></div>
             </article>
         </div>
         <div class="history">
             <h3>History</h3>
             <article>
                 <h2>
-                    <a href="" class="entry_link">Lorem, ipsum dolor.</a>
+                    <a href="/public/templates/customer/trips-info.html" class="entry_link">Lorem, ipsum dolor.</a>
                     </h2>
-                    <div class="feature-image"><img src="https://picsum.photos/800/800" alt=""></div>
+                    <div class="feature-image"><img src="https://picsum.photos/800/800?random=176" alt=""></div>
             </article>
             <article>
                 <h2>
-                    <a href="" class="entry_link">Inventore, dolor blanditiis?</a>
+                    <a href="/public/templates/customer/trips-info.html" class="entry_link">Inventore, dolor blanditiis?</a>
                     </h2>
-                    <div class="feature-image"><img src="https://picsum.photos/800/800" alt=""></div>
+                    <div class="feature-image"><img src="https://picsum.photos/800/800?random=222" alt=""></div>
             </article>
             <article>
                 <h2>
-                    <a href="" class="entry_link">Dolores, dicta excepturi.</a>
+                    <a href="/public/templates/customer/trips-info.html" class="entry_link">Dolores, dicta excepturi.</a>
                     </h2>
-                    <div class="feature-image"><img src="https://picsum.photos/800/800" alt=""></div>
+                    <div class="feature-image"><img src="https://picsum.photos/800/800?random=158" alt=""></div>
             </article>
             <article>
                 <h2>
-                    <a href="" class="entry_link">Fugiat, qui quidem?</a>
+                    <a href="/public/templates/customer/trips-info.html" class="entry_link">Fugiat, qui quidem?</a>
                     </h2>
-                    <div class="feature-image"><img src="https://picsum.photos/800/800" alt=""></div>
+                    <div class="feature-image"><img src="https://picsum.photos/800/800?random=21" alt=""></div>
             </article>
         </div>
     </div>
@@ -117,20 +117,27 @@
       const db = firebaseApp.firestore();
       const body= document.querySelector("#body1")
 
-      let links= document.querySelectorAll(".entry_link")
-      let myArray = Array.from(links)
       let i = 0
-      myArray[0].innerHTML = "assad"
-      //TODO: 
-    db.collection("trip").get().then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-            // doc.data() is never undefined for query doc snapshots
-            console.log(doc.id, " => ", doc.data());
-            body.innerHTML+=`<br>`
-            //body.innerHTML+=`${doc.data().destination}`
-            body.innerHTML+=`${doc.id}`
+      const categoryDocRef = db
+      .collection('customer')
+      .doc(sessionStorage.getItem("logged_in_uid"));
+    console.log(categoryDocRef)
 
-            myArray[0].innerHTML = `${doc.id}`
+      //TODO: filter according to logged in user onlyyyyyyyyyyyyyyyyyyyyyyyyyy
+      db.collection("trip").where('customer', '==', categoryDocRef).get().then((querySnapshot) => {
+          let links= document.querySelectorAll(".entry_link")
+          let myArray = Array.from(links)
+          querySnapshot.forEach((doc) => {
+              // doc.data() is never undefined for query doc snapshots
+              console.log(doc.id, " => ", doc.data());
+              //body.innerHTML+=`<br>`
+              //body.innerHTML+=`${doc.data().destination}`
+              //body.innerHTML+=`${doc.id}`
+              
+            myArray[i].innerHTML = `${doc.id}`
+            myArray[i].href = `/public/templates/customer/trips-info.html?id=${doc.id}`
+            
+            //myArray[0].innerHTML = "assad"
             i++;
         });
       });
