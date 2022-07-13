@@ -25,6 +25,9 @@ db.collection('customer').get().then((querySnapshot) => {
 
             console.log(doc.id, " => ", doc.data());
             console.log(doc.data().picture)
+            fullname.value = doc.data().name
+            email.value = doc.data().email
+            phone.value = doc.data().phone_number
             outboximgpre.innerHTML = `<img src="${doc.data().picture}" >`
         }
     });
