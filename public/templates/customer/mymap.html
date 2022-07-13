@@ -27,18 +27,6 @@
             container: "mymap",
             style: 'tomtom://vector/1/basic-main'
         });
-   
-        map.on('load', function(){
-            document.querySelector('.tt-side-panel__header').appendChild(ttSearchBox.getSearchBoxHTML());
-        })
-        // var searchBox = new tt.plugins.SearchBox(tt.services, searchBoxOptions);
-        
-        tt.services.autocomplete({
-            
-            key:APIKEY,
-            language:'en-US',
-            container: "query",
-        })
 
         function callbackFn(response) {
                     console.log(response);
@@ -85,6 +73,7 @@
         })
 
         var handleResults = function(result){
+            console.log(result)
                 if(result.results){
                     moveMap(result.results[0].position)
                     console.log(result)
