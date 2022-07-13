@@ -106,7 +106,7 @@ h2 {
 .upcomings {
     display: flex;
     flex-flow: row wrap;
-    background-color: red;
+    background-color: rgba(255, 0, 0, 0.238);
     color: white;
 }
 .upcomings h3 {

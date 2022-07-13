@@ -36,60 +36,16 @@
 
     <h2>Trips</h2>
     <div id="body1">
-        <div class="upcomings">
+        <div class="upcomings" id="upcomings">
             <h3>Upcomings</h3>
-            <article>
-                <h2>
-                    <a href="/public/templates/customer/trips-info.html" class="entry_link">Lorem, ipsum dolor.</a>
-                    </h2>
-                    <div class="feature-image"><img src="https://picsum.photos/800/800?random=118" alt=""></div>
-            </article>
-            <article>
-                <h2>
-                    <a href="/public/templates/customer/trips-info.html" class="entry_link">Inventore, dolor blanditiis?</a>
-                    </h2>
-                    <div class="feature-image"><img src="https://picsum.photos/800/800?random=30" alt=""></div>
-            </article>
-            <article>
-                <h2>
-                    <a href="/public/templates/customer/trips-info.html" class="entry_link">Dolores, dicta excepturi.</a>
-                    </h2>
-                    <div class="feature-image"><img src="https://picsum.photos/800/800?random=128" alt=""></div>
-            </article>
-            <article>
-                <h2>
-                    <a href="/public/templates/customer/trips-info.html" class="entry_link">Fugiat, qui quidem?</a>
-                    </h2>
-                    <div class="feature-image"><img src="https://picsum.photos/800/800?random=13" alt=""></div>
-            </article>
+
         </div>
-        <div class="history">
-            <h3>History</h3>
-            <article>
-                <h2>
-                    <a href="/public/templates/customer/trips-info.html" class="entry_link">Lorem, ipsum dolor.</a>
-                    </h2>
-                    <div class="feature-image"><img src="https://picsum.photos/800/800?random=176" alt=""></div>
-            </article>
-            <article>
-                <h2>
-                    <a href="/public/templates/customer/trips-info.html" class="entry_link">Inventore, dolor blanditiis?</a>
-                    </h2>
-                    <div class="feature-image"><img src="https://picsum.photos/800/800?random=222" alt=""></div>
-            </article>
-            <article>
-                <h2>
-                    <a href="/public/templates/customer/trips-info.html" class="entry_link">Dolores, dicta excepturi.</a>
-                    </h2>
-                    <div class="feature-image"><img src="https://picsum.photos/800/800?random=158" alt=""></div>
-            </article>
-            <article>
-                <h2>
-                    <a href="/public/templates/customer/trips-info.html" class="entry_link">Fugiat, qui quidem?</a>
-                    </h2>
-                    <div class="feature-image"><img src="https://picsum.photos/800/800?random=21" alt=""></div>
-            </article>
+
+        <div class="history" id="history">
+            <!-- <h3>history</h3> -->
+
         </div>
+
     </div>
     
 </main>
@@ -133,13 +89,26 @@
               //body.innerHTML+=`<br>`
               //body.innerHTML+=`${doc.data().destination}`
               //body.innerHTML+=`${doc.id}`
+              const pdiv = document.createElement("article")
+              pdiv.innerHTML = `
+              <h2>
+                <a href="/public/templates/customer/trips-info.html?id=${doc.id}" class="entry_link">${doc.id}</a>
+            </h2>
+            <div class="feature-image"><img src="https://picsum.photos/800/800?random=${i}" alt=""></div>
+              `
+
+
+              upcomings.appendChild(pdiv)
+
               
-            myArray[i].innerHTML = `${doc.id}`
-            myArray[i].href = `/public/templates/customer/trips-info.html?id=${doc.id}`
-            
-            //myArray[0].innerHTML = "assad"
-            i++;
-        });
+              //myArray[i].innerHTML = `${doc.id}`
+              //myArray[i].href = `/public/templates/customer/trips-info.html?id=${doc.id}`
+              
+
+              console.log(doc.id)
+              //myArray[0].innerHTML = "assad"
+              i++;
+            });
       });
 </script>
 </html>
