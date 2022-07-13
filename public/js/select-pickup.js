@@ -23,9 +23,13 @@ add4.addEventListener('click', () => {
 
   // window.location.replace("http://127.0.0.1:5500/public/index.html");
   // sessionStorage.setItem('customerPickupLocation', 'Burnaby' )
-  sessionStorage.setItem('customerLat', lat.value)
-  sessionStorage.setItem('customerLng', lng.value)
-
+  sessionStorage.setItem('customerLat', finalLat)
+  sessionStorage.setItem('customerLng', finalLng)
+  if(chk === 1) {
+    sessionStorage.setItem("customerLocation" , finalpick)
+  }else{
+    sessionStorage.setItem("customerLocation" , finalpicksearch)
+  }
   //SAVE ALL SESSION DATA TO FIREBASE===
   saveData();
 
@@ -33,6 +37,143 @@ add4.addEventListener('click', () => {
   // window.location.pathname = 'public/templates/customer/payment.html'
   // src.style.visibility = "visible"
 });
+
+//Start of code by Mohit 
+
+let check = 1;
+var APIKEY = "T6OoEaHvVvVk1vZSc76hPAPxsddIx8GS";
+var BC = [-123.117535,49.283400]
+var finalLng;
+var finalLat;
+var finalpick;
+var chk = 0;
+var finalpicksearch;
+var map = tt.map({
+key: APIKEY,
+center: BC,
+zoom: 10,
+container: "mymap",
+style: 'tomtom://vector/1/basic-main'
+});
+
+function callbackFn(response) {
+        console.log(response);
+        console.log(response.addresses[0].address.freeformAddress)
+        document.getElementById("query").value = response.addresses[0].address.freeformAddress;
+        chk = 1;
+        finalpick = response.addresses[0].address.freeformAddress;
+}
+var revgeo = function(lng,ltd){    
+    
+    tt.services.reverseGeocode({
+        key: APIKEY,
+        position: [lng,ltd],
+        }
+        
+        ).go().then(callbackFn);
+        //alert(position)
+    }
+var moveMap = function(lnglat){
+map.flyTo({
+    center:lnglat,
+    zoom:17
+})
+
+}
+
+// map.touchPitch.enable();
+map.addControl(new tt.GeolocateControl({
+    positionOptions: {
+        enableHighAccuracy: true
+    },
+    trackUserLocation: true
+    
+}));    
+        
+
+var nav = new tt.NavigationControl({});
+map.addControl(nav, 'top-left');
+
+
+map.on('click',function(event){
+var touchingLayer = map.queryRenderedFeatures(event.point)
+console.log(touchingLayer)
+
+
+})
+
+var handleResults = function(result){
+console.log(result)
+    if(result.results){
+        moveMap(result.results[0].position)
+        // console.log(result.results[0].position.lat)
+        // console.log("hooray")
+
+        finalLat = result.results[0].position.lat
+        finalLng = result.results[0].position.lng
+        finalpicksearch = result.results[0].address.freeformAddress
+        //marker.remove(result.results[1].position)
+       
+        var marker = new tt.Marker().setLngLat(result.results[0].position).addTo(map).setDraggable([shouldBeDraggable=false]);
+        
+        //var marker2 = new tt.Marker().setLngLat(result.results[1].position).addTo(map);
+        // var marker3 = new tt.Marker().setLngLat(result.results[2].position).addTo(map);
+        // marker.remove();
+    }
+}
+
+var search = function(){
+tt.services.fuzzySearch({
+    key:APIKEY,
+    query: document.getElementById("query").value,
+    boundingBox: map.getBounds(),
+    
+}     
+
+).go().then(handleResults)           
+
+}
+
+    function getLocation() {
+if (navigator.geolocation) {
+navigator.geolocation.getCurrentPosition(showPosition, showError);
+} else { 
+x.innerHTML = "Geolocation is not supported by this browser.";
+}
+}
+
+function showPosition(position) {
+
+var poslat = position.coords.latitude
+var poslan = position.coords.longitude;
+finalLng = poslan;
+finalLat = poslat;
+arr = [poslan,poslat]
+moveMap(arr)
+var marker = new tt.Marker().setLngLat(arr).addTo(map);
+revgeo(poslan,poslat);
+}
+
+//49.2434453 -123.0800022
+
+function showError(error) {
+switch(error.code) {
+    case error.PERMISSION_DENIED:
+    
+    break;
+    case error.POSITION_UNAVAILABLE:
+    // x.innerHTML = "Location information is unavailable."
+    break;
+    case error.TIMEOUT:
+    // x.innerHTML = "The request to get user location timed out."
+    break;
+    case error.UNKNOWN_ERROR:
+    // x.innerHTML = "An unknown error occurred."
+    break;
+}
+}
+//end of code by Mohit
+
 
 
 const saveData = () => {
@@ -87,7 +228,7 @@ console.log(expRef)
       console.log("Document written with ID: ", docRef.id);
       //trip id save to local
       sessionStorage.setItem("trip_id" , docRef.id)
-
+      
 
       console.log(db.collection('trip').doc(logged_in_uid))
 
@@ -112,36 +253,36 @@ console.log(expRef)
 }
 
 
-const x = document.querySelector("#error_box")
+// const x = document.querySelector("#error_box")
 
-function getLocation() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition, showError);
-  } else { 
-    x.innerHTML = "Geolocation is not supported by this browser.";
-  }
-}
+// function getLocation() {
+//   if (navigator.geolocation) {
+//     navigator.geolocation.getCurrentPosition(showPosition, showError);
+//   } else { 
+//     x.innerHTML = "Geolocation is not supported by this browser.";
+//   }
+// }
 
-function showPosition(position) {
-  document.getElementById('lat').value = position.coords.latitude
-  document.getElementById('lng').value = position.coords.longitude;
-}
+// function showPosition(position) {
+//   document.getElementById('lat').value = position.coords.latitude
+//   document.getElementById('lng').value = position.coords.longitude;
+// }
 
-function showError(error) {
-  switch(error.code) {
-    case error.PERMISSION_DENIED:
-      x.innerHTML = "User denied the request for Geolocation."
-      break;
-    case error.POSITION_UNAVAILABLE:
-      x.innerHTML = "Location information is unavailable."
-      break;
-    case error.TIMEOUT:
-      x.innerHTML = "The request to get user location timed out."
-      break;
-    case error.UNKNOWN_ERROR:
-      x.innerHTML = "An unknown error occurred."
-      break;
-  }
-}
+// function showError(error) {
+//   switch(error.code) {
+//     case error.PERMISSION_DENIED:
+//       x.innerHTML = "User denied the request for Geolocation."
+//       break;
+//     case error.POSITION_UNAVAILABLE:
+//       x.innerHTML = "Location information is unavailable."
+//       break;
+//     case error.TIMEOUT:
+//       x.innerHTML = "The request to get user location timed out."
+//       break;
+//     case error.UNKNOWN_ERROR:
+//       x.innerHTML = "An unknown error occurred."
+//       break;
+//   }
+// }
 
-get_loc.onclick=getLocation
+// get_loc.onclick=getLocation

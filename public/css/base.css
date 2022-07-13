@@ -63,6 +63,52 @@ height: 100%;
 
 }
 
+/* Main navbar */
+
+.main-nav{
+    border: 1px solid white;
+    border-radius: 40px;
+    box-shadow: 0px 4px 5px silver;
+    /* margin: 1rem 0; */
+}
+
+.main-nav ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-gap: 0;
+}
+
+.main-nav li{
+    padding: 0 .5rem;
+    font-size: .75rem;
+    border-right: 1px solid black;
+    
+}
+
+#selected_info > ul > li:nth-child(5),
+#selected_info > ul > li:nth-child(4),
+#selected_info > ul > li:nth-child(6){
+    border-right: 0;
+}
+
+.main-nav li{
+    color: #151862;
+}
+
+.location-experiences{
+    color: #EA2B49 !important;
+    text-transform: capitalize;
+}
+
+.main-nav a{
+    color: black;
+}
+
+.main-nav i{
+    font-size: 1.5rem;
+}
+
 
 
 /* extra reset */
@@ -121,8 +167,9 @@ header nav {
     background-color: #ccc;
 }
 .footer-section p, .register-footer p{
-    padding: 1rem 3%;
+    padding: 0 0 0 1rem;
 }
+
 
 
 @media screen and (min-width: 1000px) {
@@ -154,5 +201,6 @@ header nav {
         display: block;    
     }
     
+   
 
 }

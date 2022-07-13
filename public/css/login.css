@@ -8,8 +8,6 @@ body {
     margin: 0;
     padding: 0;
     line-height: 1.5;
-
-    height:100vh;
 }
 
 h1, h2, h3, h4, h5, h6{
@@ -25,7 +23,7 @@ header{
     padding: 1rem;
 }
 .site-logo img{
-    width:20%;
+    width:80%;
 }
 .main_heading{
     padding:1rem;
@@ -34,6 +32,10 @@ header{
 }
 main{
     padding: 1rem;
+    
+}
+.main_landing{
+    height:100vh;
 }
 img{
     width:100%;
@@ -122,9 +124,12 @@ form{
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: black;
     opacity: 1; /* Firefox */
-    padding-left:2rem;
+    /* padding-left:2rem; */
     font-size: 2vh;
     font-weight:bolder;
+  }
+  input#email1  ,input#password1{
+    padding-left:1rem;
   }
 .signIn{
     text-decoration: none;

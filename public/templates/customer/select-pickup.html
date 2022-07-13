@@ -1,40 +1,65 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <style type="text/css">
-          #map{ width:700px; height: 500px; }
-        </style>
-        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDqGXY4A-xF5cl-4yLpTkktzNpSzgEDDDg&callback=initMap&v=weekly"></script>
-        <title>Pickup</title>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Maps</title>
+                <link rel="stylesheet" href="../../css/select_pickup.css">
+                <link rel='stylesheet' type='text/css' href='https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.53.0/maps/maps.css'>
+                <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.53.0/maps/maps-web.min.js"></script>
+                <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.53.0/services/services-web.min.js"></script>
+                <link rel='stylesheet' type='text/css' href='https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.53.0/plugins/SearchBox/SearchBox.css'>
+            </head>
     </head>
     <body>
 
         <div id="src" >
-            <h2>Pick you up at</h2>
-        <p>Click on a location on the map to select it. Drag the marker to change location.</p>
-
-    
-            <!-- <form action="">
-            <div><label for="">Source Location</label><br><input name="src" type="text" id="fname2" required></div>
-            </form> -->
-
-        <!--map div-->
-        <div id="map"></div>
-
-        <button id="get_loc">Get Current Location</button>
-        <div id="error_box"></div>
-        <!--our form-->
-        <h2>Chosen Location</h2>
-        <form method="post">
-            <input type="text" id="lat" readonly="yes"><br>
-            <input type="text" id="lng" readonly="yes">
-        </form>
+            <header class="site-header">
+                <div>
+                    <i class="fa-solid fa-bars" id="menu"></i>
+        
+                    <div class="site-logo">
+                        <a href="#"><img src="/public/images/tourpal-logo.svg" alt="logo"></a>
+                    </div>
+                    <div style="visibility: hidden">
+                        sffasfss
+                    </div>
+                </div>
+            <nav>
+                <ul>
+                    <li><a href="/public/templates/customer/index.html">Home</a></li>
+                    <li><a href="/public/templates/customer/trips.html">Trips</a></li>
+                    <li><a href="/public/templates/customer/settings.html">Account Settings</a></li>
+                    <li><a href="#">Notifications</a></li>
+                    <li><a href="/public/templates/logout.html" id="logout">Log out - </a></li>
+        
+                </ul>
+            </nav>
+        </header>
+        <h1>Select pickup location</h1>
+            <div class="search" style="text-align: center;">
+                
+                <input type="text" id="query" value="">
+                <button onclick="search()">SEARCH</button> <span class="Or">Or</span> <button onclick="getLocation()">Use Current Location</button>
+                
+                <br>
+                <button class="confirm"  id="add4" >Confirm pickup</button>  
+                <br>
+                    <div id="mymap" style="width: 130vh; height: 80vh; margin: auto;">My Map is visible</div>
+              
+                     
+            
+            
+                 
+                </div>
+            </html>
 
 
 
             <div>
                 <!-- <input type="submit" value="Add" id="add"> -->
-                <button  id="add4">Select Location</button>
+                
             </div>
         </div>
 
