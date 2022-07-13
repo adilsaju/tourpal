@@ -41,7 +41,7 @@ const firebaseApp = firebase.initializeApp({
           console.log("========================")
           pdiv.innerHTML = `
           <ul>
-          <li>Pickup from: ${sessionStorage.getItem('customerLat')} ${sessionStorage.getItem('customerLng')}</li>
+          <li>Pickup from: ${sessionStorage.getItem("customerLocation")}</li>
           <li>Depart Time: ${sessionStorage.getItem("departDateTime")}</li>
           <li>Driver: ${data.name}</li>
           </ul>
