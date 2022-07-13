@@ -47,7 +47,7 @@ const saveData = () => {
   let customerLng = sessionStorage.getItem('customerLng');
 
   let driverSelected = sessionStorage.getItem('driverSelected');
-  let city = sessionStorage.getItem('city');
+  // let city = sessionStorage.getItem('city');
   let departDateTime = sessionStorage.getItem('departDateTime');
   let user_type = sessionStorage.getItem('user_type');
 
@@ -74,13 +74,14 @@ console.log(expRef)
     .add({
       bookdate: new Date(),
       customer: customerRef,
-      destination: city,
+      // destination: city,
       driver: driverRef,
       enddate: new Date(finishDateTime),
       experience_selected: expRef,
       guest_count: parseInt(noOfPeople),
       is_cancelled: false,
-      startdate: new Date(departDateTime)
+      startdate: new Date(departDateTime),
+      pickup_location: new firebase.firestore.GeoPoint(parseFloat(customerLat), parseFloat(customerLng))
     })
     .then((docRef) => {
       console.log("Document written with ID: ", docRef.id);
@@ -93,7 +94,6 @@ console.log(expRef)
       db.collection('customer').doc(logged_in_uid)
         .update({
           //or set
-          //TODO: add coord to trips table also
           current_location: new firebase.firestore.GeoPoint(parseFloat(customerLat), parseFloat(customerLng))
         })
         .then((docRef) => {

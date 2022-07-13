@@ -45,7 +45,11 @@
         <h2>Book a trip</h2>
 
         <form action="#" id="temp1">
-            <div><label for="">City</label><br><input name="dest" type="text" id="fname" required></div>
+            <!-- <div><label for="">City</label><br><input name="dest" type="text" id="fname" required></div> -->
+            <div class="autocomplete">
+                <label for="">City</label><br>
+                <input id="fname" type="text" name="dest" required>
+              </div>
             <div><label for="">Depart Date Time</label><br><input name="sdate" type="datetime-local" id="c100" required></div>
             <div><label for="">Finish Date Time</label><br><input name="edate" type="datetime-local" id="c200" required></div>
             <!-- <div><label for="">Duration</label><br><input type="number" id="f100" required></div> -->

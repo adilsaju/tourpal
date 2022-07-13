@@ -39,38 +39,54 @@
         <div class="upcomings">
             <h3>Upcomings</h3>
             <article>
-                <h2>Lorem, ipsum dolor.</h2>
+                <h2>
+                    <a href="" class="entry_link">Lorem, ipsum dolor.</a>
+                    </h2>
                     <div class="feature-image"><img src="https://picsum.photos/800/800" alt=""></div>
             </article>
             <article>
-                <h2>Inventore, dolor blanditiis?</h2>
+                <h2>
+                    <a href="" class="entry_link">Inventore, dolor blanditiis?</a>
+                    </h2>
                     <div class="feature-image"><img src="https://picsum.photos/800/800" alt=""></div>
             </article>
             <article>
-                <h2>Dolores, dicta excepturi.</h2>
+                <h2>
+                    <a href="" class="entry_link">Dolores, dicta excepturi.</a>
+                    </h2>
                     <div class="feature-image"><img src="https://picsum.photos/800/800" alt=""></div>
             </article>
             <article>
-                <h2>Fugiat, qui quidem?</h2>
+                <h2>
+                    <a href="" class="entry_link">Fugiat, qui quidem?</a>
+                    </h2>
                     <div class="feature-image"><img src="https://picsum.photos/800/800" alt=""></div>
             </article>
         </div>
         <div class="history">
             <h3>History</h3>
             <article>
-                <h2>Lorem, ipsum dolor.</h2>
+                <h2>
+                    <a href="" class="entry_link">Lorem, ipsum dolor.</a>
+                    </h2>
                     <div class="feature-image"><img src="https://picsum.photos/800/800" alt=""></div>
             </article>
             <article>
-                <h2>Inventore, dolor blanditiis?</h2>
+                <h2>
+                    <a href="" class="entry_link">Inventore, dolor blanditiis?</a>
+                    </h2>
                     <div class="feature-image"><img src="https://picsum.photos/800/800" alt=""></div>
             </article>
             <article>
-                <h2>Dolores, dicta excepturi.</h2>
+                <h2>
+                    <a href="" class="entry_link">Dolores, dicta excepturi.</a>
+                    </h2>
                     <div class="feature-image"><img src="https://picsum.photos/800/800" alt=""></div>
             </article>
             <article>
-                <h2>Fugiat, qui quidem?</h2>
+                <h2>
+                    <a href="" class="entry_link">Fugiat, qui quidem?</a>
+                    </h2>
                     <div class="feature-image"><img src="https://picsum.photos/800/800" alt=""></div>
             </article>
         </div>
@@ -100,13 +116,22 @@
       });
       const db = firebaseApp.firestore();
       const body= document.querySelector("#body1")
+
+      let links= document.querySelectorAll(".entry_link")
+      let myArray = Array.from(links)
+      let i = 0
+      myArray[0].innerHTML = "assad"
+      //TODO: 
     db.collection("trip").get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
             // doc.data() is never undefined for query doc snapshots
             console.log(doc.id, " => ", doc.data());
             body.innerHTML+=`<br>`
-            body.innerHTML+=`${doc.data().destination}`
-      
+            //body.innerHTML+=`${doc.data().destination}`
+            body.innerHTML+=`${doc.id}`
+
+            myArray[0].innerHTML = `${doc.id}`
+            i++;
         });
       });
 </script>
