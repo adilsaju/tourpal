@@ -39,13 +39,27 @@ const firebaseApp = firebase.initializeApp({
         .doc(sessionStorage.getItem("driverSelected")).get().then((querySnapshot)=>{
           const data = querySnapshot.data();
           console.log("========================")
-          pdiv.innerHTML = `
-          <ul>
-          <li>Pickup from: ${sessionStorage.getItem("customerLocation")}</li>
-          <li>Depart Time: ${sessionStorage.getItem("departDateTime")}</li>
-          <li>Driver: ${data.name}</li>
-          </ul>
-          `
+
+          const snapshot2 = db
+          .collection('experience')
+          .doc(sessionStorage.getItem("experienceSelected")).get().then((querySnapshot)=>{
+            const data2 = querySnapshot.data();
+            console.log("========================")
+            console.log(data2.name)
+      
+            pdiv.innerHTML = `
+            <ul>
+            <li>Pickup from: ${sessionStorage.getItem("customerLocation")}</li>
+            <li>Destination City: ${sessionStorage.getItem("city")}</li>
+            <li>Experience: ${data2.name}</li>
+            <li>Depart Time: ${sessionStorage.getItem("departDateTime")}</li>
+            <li>Driver: ${data.name}</li>
+            </ul>
+            `
+          });
+
+
+
         });
 
 
