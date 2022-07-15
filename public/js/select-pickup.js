@@ -56,6 +56,17 @@ container: "mymap",
 style: 'tomtom://vector/1/basic-main'
 });
 
+// function goBack(){
+//   history.back();
+// }
+
+// selected_info.innerHTML = `
+// <ul>
+// <li><a href="#" onclick="goBack()" ><i class="fas fa-arrow-left"></i></a></li>
+// </ul>
+// `
+
+
 function callbackFn(response) {
         console.log(response);
         console.log(response.addresses[0].address.freeformAddress)

@@ -18,17 +18,21 @@ const arriveTime = new Date(sessionStorage.getItem(('finishDateTime')));
 
 window.addEventListener("load", yourfunction, false); 
 
+function goBack(){
+  history.back();
+}
+
 function yourfunction() {
   const selected_info = document.querySelector("#selected_info")
   const city_filler = document.querySelector("#city_filler")
   
   selected_info.innerHTML = `
   <ul>
+  <li><a href="#" onclick="goBack()" ><i class="fas fa-arrow-left"></i></a></li>
   <li class="location-experiences">${sessionStorage.getItem('city')}</li>
   <li>${departTime.toDateString(sessionStorage.getItem(('departDateTime')))}</li>
   <li>${arriveTime.toDateString(sessionStorage.getItem('finishDateTime'))}</li>
   <li>${sessionStorage.getItem('noOfPeople')}</li>
-  <li><a href="#"><i class="fas fa-pen"></i></a></li>
   
   </ul>
   `
