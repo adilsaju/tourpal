@@ -8,11 +8,8 @@ menuButton.onclick = function() {
 }
 
 
-window.onload = function() {
-  
-  
-  
-  console.log("it worked===============================")
+
+console.log("it worked===============================")
   let is_logged_in = "false"
   try {
     is_logged_in = sessionStorage.getItem('is_logged_in');
@@ -34,4 +31,3 @@ window.onload = function() {
     console.log(host)
     window.location.href = `/public/templates/landing-page.html`
   }
-}

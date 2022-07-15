@@ -57,4 +57,4 @@ function markerLocation(){
         
         
 //Load the map when the page has finished loading.
-google.maps.event.addDomListener(window, 'load', initMap);
+// google.maps.event.addDomListener(window, 'load', initMap);
