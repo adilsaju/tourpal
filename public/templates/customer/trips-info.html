@@ -9,6 +9,12 @@
 
 </head>
 <body>
+    <div class="alert info" id="alert"  >
+        <span class="closebtn" onclick="this.parentElement.classList.remove('alert-show');">&times;</span> 
+        <span id="alert_body">
+            <strong>Danger!</strong> Indicates a dangerous or potentially negative action.
+        </span>
+      </div>
     <header class="site-header">
         <div>
             <i class="fa-solid fa-bars" id="menu"></i>
@@ -41,7 +47,7 @@
 
     </div>
 
-    <!-- <button>Cancel trip</button> -->
+    <button onclick="deleteData()">Cancel trip</button>
 </main>
 
 
@@ -55,6 +61,7 @@
 
 <script src="/public/js/base.js"></script>
 <script>
+
     const firebaseApp = firebase.initializeApp({
         //Your own Firebase Credentials..
         apiKey: "AIzaSyBT-dRzb2pbR9exsiiIJtoILkf5ck3X0pg",
@@ -68,7 +75,20 @@
       });
       const db = firebaseApp.firestore();
 
+      var deleteData = () => {
+        db.collection('trip').doc(urlParams.get('id')).delete()
+        .then(() => {
+        //   history.back();
+            window.location.href = `/public/templates/customer/trips.html`
 
+            customFlash('Data Deleted')
+        })
+        .catch((err) =>{
+            customFlash(err.toString())
+
+            console.log(err)
+        })
+    }
       const pdiv = document.createElement("div")
         
       const urlParams = new URLSearchParams(window.location.search);
@@ -85,6 +105,8 @@
         <li>Booked Date: ${data.bookdate.toDate()}</li>
         <li>Depart Time: ${data.startdate.toDate()}</li>
         <li>End Time: ${data.enddate.toDate()}</li>
+        <li>Experience: ${data.experience_selected}</li>
+        <li>Driver: ${data.driver}</li>
 
 
         </ul>
