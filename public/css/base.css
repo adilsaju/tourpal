@@ -171,7 +171,43 @@ header nav {
 }
 
 
+/* The alert message box */
+.alert {
+    padding: 20px;
+    background-color: rgb(235,60,86)/* Red */;
+    color: white;
+    margin-bottom: 15px;
 
+
+    position: absolute;
+    top: 0;
+    z-index: 100;
+    opacity: .72;
+    width: 100%;
+    /* transform: translateX(-50%); */
+    /* left: 50%; */
+    display: none;
+  }
+  
+  /* The close button */
+  .closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  /* .alert.info {background-color: #2196F3;} */
+  /* When moving the mouse over the close button */
+  .closebtn:hover {
+    color: black;
+  }
+  .alert-show {
+    display: block;
+  }
 @media screen and (min-width: 1000px) {
 
     
@@ -202,5 +238,9 @@ header nav {
     }
     
    
-
+    .alert {
+        width: 50%;
+        transform: translateX(-50%);
+        left: 50%;
+      }
 }

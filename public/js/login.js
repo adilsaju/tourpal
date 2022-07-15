@@ -37,11 +37,27 @@ signin.addEventListener ('click', (e) => {
         onSuccessLogin(email, password, res);
     })
     .catch((err) => {
-        alert(err.message)
+        // alert(err.message)
+        customFlash("The password is invalid or the user does not have a password")
         console.log(err.code)
         console.log(err.message)
     })
   });
+
+async function customFlash(message){
+  alert_body.innerHTML = `${message}`
+  let alert = document.querySelector("#alert")
+  alert.classList.add("alert-show")
+  await sleep(3000);
+  alert.style.display = "none"
+
+}
+
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 
 function onSuccessLogin(email, password, res) {
     console.log("on success")
