@@ -74,6 +74,7 @@
         measurementId: "G-G9LL7MBNG0"
       });
       const db = firebaseApp.firestore();
+      const urlParams = new URLSearchParams(window.location.search);
 
       var deleteData = () => {
         db.collection('trip').doc(urlParams.get('id')).delete()
@@ -91,7 +92,6 @@
     }
       const pdiv = document.createElement("div")
         
-      const urlParams = new URLSearchParams(window.location.search);
       const trip_id = urlParams.get('id');
 
       const snapshot = db
