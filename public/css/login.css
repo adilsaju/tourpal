@@ -226,6 +226,8 @@ form{
         .register-footer{
             margin-top:10rem;
         }
+
+    
  }
 
  @media screen and (min-width:750px) {
@@ -238,6 +240,10 @@ form{
     }
     .register_form{
         height: 100vh;
+    }
+
+    main{
+        grid-column: 1/-1;
     }
  }
 
