@@ -34,7 +34,7 @@ header{
 }
 
 main{
-    padding: 1rem;
+    padding: 2rem;
 }
 
 main p,
@@ -153,6 +153,20 @@ main form div button{
     padding: .5rem;
 }
 
+label{
+    color: #151862;
+    font-weight: bolder;
+}
+
+input{
+    font-weight: bold;
+    color: #ea2b49;
+}
+
+::-webkit-calendar-picker-indicator{
+    color: #ea2b49;
+}
+
 .footer-section{
     height: fit-content;
     padding: .7rem;
@@ -161,6 +175,16 @@ main form div button{
 .footer-section p{
     padding: 0;
 }
+
+@media screen and (min-width: 700px){
+
+    main{
+        max-width: 60%;
+        margin: auto;
+        
+    }
+}
+
 
 
 @media screen and (min-width: 1000px) {
@@ -201,20 +225,28 @@ main form div button{
         height: fit-content;
         background-color: white;
         border-radius: 2rem;
+        align-self: center;
+        box-shadow: -3px 5px 3px rgba(128, 128, 128, 0.247);
     }
 
     body {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
     }
+
     header, footer {
         grid-column: 1/-1;
     }
+
+    footer{
+        align-self: end;
+    }
+
     .extra_img {
         display: block;
         /* width: 20rem; */
-        margin-left: -6rem;
-        margin-right: 6.5rem;
+        margin-left: -7rem;
+        margin-right: 7rem;
     }
     .extra_img img {
         border-radius: 2rem;
