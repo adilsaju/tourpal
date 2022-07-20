@@ -4,6 +4,7 @@
 body {
     margin: 0;
     padding: 0;
+    height: 100vh;
 }
 
 h1, h2, h3, h4, h5, h6{
@@ -33,7 +34,12 @@ header{
 }
 
 main{
-    padding: 1rem;
+    padding: 2rem;
+}
+
+main p,
+main h2{
+    padding: 2% 0;
 }
 
 img{
@@ -92,7 +98,7 @@ header nav {
 }
 
 form {
-    width: 90%;
+    width: 100%;
     margin: auto;
 }
 
@@ -105,7 +111,8 @@ form > div {
 form div input{
     flex: 1 0 50%;
     border: none;
-    border-left: 1px solid grey;
+    border-left: 1px solid black;
+    max-width: 50%;
 }
 
 form div label{
@@ -116,7 +123,7 @@ form div label{
 #add {
     background-color:  rgb(235,60,86);
     border: none;
-    border-radius: 4rem;
+    border-radius: 1.5rem;
     width: 100%;
     color: white;
 }
@@ -130,6 +137,54 @@ form > div:nth-last-of-type(1) {
 .extra_img {
     display: none;
 }
+
+/* Form */
+
+main > form > div{
+    margin-bottom: 3%;
+}
+
+main > form > div > label,
+main > form > div > input{
+    padding: .5rem;
+}
+
+main form div button{
+    padding: .5rem;
+}
+
+label{
+    color: #151862;
+    font-weight: bolder;
+}
+
+input{
+    font-weight: bold;
+    color: #ea2b49;
+}
+
+::-webkit-calendar-picker-indicator{
+    color: #ea2b49;
+}
+
+.footer-section{
+    height: fit-content;
+    padding: .7rem;
+}
+
+.footer-section p{
+    padding: 0;
+}
+
+@media screen and (min-width: 700px){
+
+    main{
+        max-width: 60%;
+        margin: auto;
+        
+    }
+}
+
 
 
 @media screen and (min-width: 1000px) {
@@ -147,6 +202,7 @@ form > div:nth-last-of-type(1) {
         display: flex;
         align-items: center;
         justify-content: space-between;
+        height: fit-content;
     }
 
     header > div:nth-of-type(1) i  {
@@ -161,22 +217,36 @@ form > div:nth-last-of-type(1) {
     .hide {
         display: block;    
     }
+    
     main {
         max-width: 80%;
-        margin-left: 1rem;
+        position: relative;
+        left: 6rem;
+        height: fit-content;
+        background-color: white;
+        border-radius: 2rem;
+        align-self: center;
+        box-shadow: -3px 5px 3px rgba(128, 128, 128, 0.247);
     }
-
 
     body {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
     }
+
     header, footer {
         grid-column: 1/-1;
     }
+
+    footer{
+        align-self: end;
+    }
+
     .extra_img {
         display: block;
-        width: 20rem;
+        /* width: 20rem; */
+        margin-left: -7rem;
+        margin-right: 7rem;
     }
     .extra_img img {
         border-radius: 2rem;

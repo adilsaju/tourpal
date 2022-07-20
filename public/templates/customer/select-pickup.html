@@ -42,20 +42,22 @@
         <h1>Select pickup location</h1>
             <div class="search" style="text-align: center;">
                 
-                <input type="text" id="query" value="">
-                <button onclick="search()">SEARCH</button> <span class="Or">Or</span> <button onclick="getLocation()">Use Current Location</button>
-                
-                <br>
-                <button class="confirm"  id="add4" >Confirm pickup</button>  
-                <br>
-                    <div id="mymap" style="width: 130vh; height: 80vh; margin: auto;">My Map is visible</div>
-              
-                     
-            
-            
-                 
+                <div class="location-map">
+                    <div class="search-btn">
+                        <input type="text" id="query" value="">
+                        <button class="search-btn-inside" onclick="search()">Search</button>
+                    </div>
+
+                    <!-- <span class="Or">Or</span> -->
+
+                    <button class="current-location-btn" onclick="getLocation()">Use Current Location</button>
+                    
+                    <button class="confirm"  id="add4" >Confirm pickup</button>
                 </div>
-            </html>
+
+                <div id="mymap" style="width: 130vh; height: 80vh; margin: auto;">My Map is visible</div>
+                 
+            </div>
 
 
 

@@ -48,13 +48,14 @@ article button{
     background-color: #EA2B49;
     color: white;
     font-weight: bold;
+    height: fit-content;
+    align-self: end;
 }
 
 article{
-    display: flex;
-    flex-flow: column nowrap;
+    display: grid;
     gap: 1rem;
-    align-items: center;
+    justify-items: center;
     background-color: rgb(250, 246, 246);
     padding: 1rem 2%;
     border-radius: 25px;
