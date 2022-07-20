@@ -22,7 +22,7 @@ const firebaseApp = firebase.initializeApp({
 
     const snapshot = db
     .collection('trip')
-    .doc(`${sessionStorage.getItem("city")}`).get().then((doc)=>{
+    .doc(`${sessionStorage.getItem("trip_id")}`).get().then((doc)=>{
       // const data = doc.data();
 
         // doc.data() is never undefined for query doc snapshots
@@ -55,6 +55,8 @@ const firebaseApp = firebase.initializeApp({
             <li>Experience: ${data2.name}</li>
             <li>Depart Time: ${sessionStorage.getItem("departDateTime")}</li>
             <li>Driver: ${data.name}</li>
+            <li>Trip id: ${doc.id}</li>
+
             </ul>
             `
           });

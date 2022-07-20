@@ -38,6 +38,9 @@
 </header>
 
 <main>
+    <div id="back">
+
+    </div>
     <h3>
         More Info
 
@@ -99,23 +102,37 @@
       .doc(trip_id).get().then((querySnapshot)=>{
         const data = querySnapshot.data();
         console.log(data.experience_selected)
-        pdiv.innerHTML = `
-        <ul>
-        <li>Id: ${trip_id}</li>
-        <li>Booked Date: ${data.bookdate.toDate()}</li>
-        <li>Depart Time: ${data.startdate.toDate()}</li>
+
+        db
+        .collection('experience')
+        .doc(data.experience_selected.id).get().then((querySnapshot2)=>{
+
+            db
+            .collection('driver')
+            .doc(data.driver.id).get().then((querySnapshot3)=>{
+                console.log(querySnapshot3)
+                console.log(querySnapshot3.data())
+                pdiv.innerHTML = `
+                <ul>
+
+                    <li>Id: ${trip_id}</li>
+                    <li>Booked Date: ${data.bookdate.toDate()}</li>
+                    <li>Depart Time: ${data.startdate.toDate()}</li>
         <li>End Time: ${data.enddate.toDate()}</li>
-        <li>Experience: ${data.experience_selected}</li>
-        <li>Driver: ${data.driver}</li>
-
-
-        </ul>
-        `
+        <li>Experience: ${querySnapshot2.data().name}</li>
+        <li>Driver: ${querySnapshot3.data().name}</li>
+        
+        
+    </ul>
+    `
+        })
+    })
       });
 
    confirmed_trip.appendChild(pdiv)
-   //<li>Experience: ${data.experience_selected}</li>
-   //<li>Driver: ${data.driver}</li>
+   const pdiv2 = document.createElement("div")
+   pdiv2.innerHTML = `<a href="#" onclick="history.back()" ><i class="fas fa-arrow-left"></i></a>`
+   back.appendChild(pdiv2)
 
 </script>
 </html>

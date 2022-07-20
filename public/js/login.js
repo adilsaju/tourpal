@@ -45,7 +45,19 @@ signin.addEventListener ('click', (e) => {
   });
 
 
-
+  async function customFlash(message){
+    alert_body.innerHTML = `${message}`
+    let alert = document.querySelector("#alert")
+    alert.classList.add("alert-show")
+    await sleep(3000);
+    alert.classList.remove("alert-show")
+  
+  }
+  
+  
+  function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
 
 function onSuccessLogin(email, password, res) {
     console.log("on success")
