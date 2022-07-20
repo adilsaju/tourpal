@@ -73,7 +73,7 @@
           console.log(sessionStorage.getItem("logged_in_uid"))
           //TODO: filter according to logged in user onlyyyyyyyyyyyyyyyyyyyyyyyyyy
           // TODO: 
-          db.collection("trip").where('driver', '==', categoryDocRef).get().then((querySnapshot) => {
+          db.collection("trip").where('driver', '==', categoryDocRef).orderBy("startdate").get().then((querySnapshot) => {
               querySnapshot.forEach((doc) => {
                   const pdiv = document.createElement("article")
                   fetch(`http://api.positionstack.com/v1/reverse?access_key=c5f0aee166d9e58c8177284029e1a94d&query=${doc.data().pickup_location.latitude},${doc.data().pickup_location.longitude}`)
@@ -81,29 +81,45 @@
                   .then(d => {
                     console.log('Success:', d["data"][0].label);
                     console.log(doc.data())
-                                      pdiv.innerHTML = `
-                    <ul>
-                        <li>
-                            Trip id: ${doc.id}
-                        </li>
-                        <li>
-                            Experience: ${doc.data().experience_selected.id}
 
-                        </li>
-                        <li>
-                            Starting: ${doc.data().startdate.toDate()}
-                        </li>
-                        <li>
-                            Customer: ${doc.data().customer.id}
-                        </li>
-                        <li>
-                            Pickup: ${d["data"][0].label}
-                        </li>
-                        
-                    </ul>
-                    <br>
-                  `
-    
+                    db
+                    .collection('experience')
+                    .doc(doc.data().experience_selected.id).get().then((querySnapshot2)=>{
+
+                        db
+                        .collection('customer')
+                        .doc(doc.data().customer.id).get().then((querySnapshot3)=>{
+
+                            pdiv.innerHTML = `
+                            <ul>
+                                <li>
+                                    Trip id: ${doc.id}
+                                </li>
+                                <li>
+                                    Experience: ${querySnapshot2.data().name}
+        
+                                </li>
+                                <li>
+                                    Starting: ${doc.data().startdate.toDate()}
+                                </li>
+                                <li>
+                                    Customer: ${querySnapshot3.data().name}
+                                </li>
+                                <li>
+                                    Pickup: ${d["data"][0].label}
+                                </li>
+                                
+                            </ul>
+                            <br>
+                          `
+            
+                        });
+
+
+                     
+                    });
+
+
     
                   upcomings.appendChild(pdiv)
                   
