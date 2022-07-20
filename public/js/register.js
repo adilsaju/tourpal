@@ -47,7 +47,7 @@ signup.addEventListener ('click', (e) => {
         .then((res) => {
             console.log(res.user)
             // console.log(picture)
-            addToDb(email, password, fullname, phone, base64data, res);
+              addToDbCustomer(email, password, fullname, phone, base64data, res);        
         })
         .catch((err) => {
             alert(err.message)
@@ -62,7 +62,7 @@ signup.addEventListener ('click', (e) => {
       .then((res) => {
           console.log(res.user)
           // console.log(picture)
-          addToDb(email, password, fullname, phone, "", res);
+            addToDbCustomer(email, password, fullname, phone, "", res);
       })
       .catch((err) => {
           alert(err.message)
@@ -76,6 +76,12 @@ signup.addEventListener ('click', (e) => {
   });
 
   window.onload = function() {
+    // console.log("seting=================")
+    // const urlParams = new URLSearchParams(window.location.search);
+    // const user_type = urlParams.get('user_type');
+    // sessionStorage.setItem('user_type', user_type);
+
+
     is_logged_in = sessionStorage.getItem('is_logged_in');
     
   if (is_logged_in === "true") {
@@ -85,7 +91,7 @@ signup.addEventListener ('click', (e) => {
   }
 }
 
-function addToDb(email, password, fullname, phone, picture, res) {
+function addToDbCustomer(email, password, fullname, phone, picture, res) {
   // var userSnap = firebaseApp.database().ref('users/'+ auth.currentUser)
 // console.log(userSnap)
 db.collection('customer').doc(res.user.uid).set({
@@ -105,6 +111,25 @@ db.collection('customer').doc(res.user.uid).set({
   // })
   .then((docRef) => {
       // console.log("Document written with ID: ", docRef.id);
+      console.log("Document written with ID: ")
+      onSuccessRegister(email, password, res);
+
+  })
+  .catch((error) => {
+      console.error("Error adding document: ", error);
+      alert("error")
+  });
+}
+
+function addToDbDriver(email, password, fullname, phone, picture, res) {
+db.collection('driver').doc(res.user.uid).set({
+  email: email,
+  password: password,
+  name: fullname,
+  phone_number: phone,
+  picture: picture
+})
+  .then((docRef) => {
       console.log("Document written with ID: ")
       onSuccessRegister(email, password, res);
 

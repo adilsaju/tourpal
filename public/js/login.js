@@ -59,19 +59,42 @@ function onSuccessLogin(email, password, res) {
     sessionStorage.setItem('logged_in_email', email);
     sessionStorage.setItem('logged_in_uid', res.user.uid);
     sessionStorage.setItem('logged_in_password', password);
-    sessionStorage.setItem('user_type', "customer");
-
-    window.location.href = `/public/templates/customer/index.html`
+    // sessionStorage.setItem('user_type', "customer");
+    if (sessionStorage.getItem('user_type') === "driver"){
+      console.log("driverrrrrrrrrrrrrrrrrrrr")
+        window.location.href = `/public/templates/driver/driver-dashboard.html`
+    }
+    else
+    {
+      window.location.href = `/public/templates/customer/index.html`
+    }
 
 
 }
 
 window.onload = function() {
+  // const urlParams = new URLSearchParams(window.location.search);
+  // const user_type = urlParams.get('user_type');
+  // sessionStorage.setItem('user_type', user_type);
+
     is_logged_in = sessionStorage.getItem('is_logged_in');
     
   if (is_logged_in === "true") {
     //redirect
     console.log("user already logged in")
-    window.location.href = `/public/templates/customer/index.html`
+
+    if (sessionStorage.getItem('user_type') === "driver"){
+      console.log("driverrrrrrrrrrrrrrrrrrrr")
+        window.location.href = `/public/templates/driver/driver-dashboard.html`
+    }
+    else
+    {
+      window.location.href = `/public/templates/customer/index.html`
+    }
+
   }
+
+
+
+
 }

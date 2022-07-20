@@ -7,3 +7,7 @@
 //     window.location.href = `/public/index.html`
 //   }
 // }
+
+function hello(user_type) {
+    sessionStorage.setItem('user_type', user_type);
+}

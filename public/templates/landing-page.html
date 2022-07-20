@@ -40,7 +40,7 @@
 <body>
     <header class="site-header">
         <div class="site-logo">
-            <a href="#"><img src="/public/images/tourpal-logo.svg" alt="logo"></a>
+            <a href="/public/templates/landing-page.html"><img src="/public/images/tourpal-logo.svg" alt="logo"></a>
         </div>
     </header>
 
@@ -49,7 +49,7 @@
             Hi, Please pick one option 
         </h1>
         <div class="article_container">
-            <a href="/public/templates/login.html">
+            <a href="/public/templates/login.html" onclick="hello('customer')">
                 <article class="article_customer">
                     <img src="/public/images/t.jpg" alt="">
                     <div class="article-header">
@@ -57,12 +57,15 @@
                     </div>
                 </article>
             </a>
-            <article class="article_customer">
-                <img src="/public/images/v.jpg" alt="">
-                <div class="article-header">
-                    <h2><span>I am a</span> Driver</h2>
-                </div>
-            </article>
+            <a href="/public/templates/login.html" onclick="hello('driver')">
+
+                <article class="article_customer">
+                    <img src="/public/images/v.jpg" alt="">
+                    <div class="article-header">
+                        <h2><span>I am a</span> Driver</h2>
+                    </div>
+                </article>
+            </a>
         </div>
 
     </main>
