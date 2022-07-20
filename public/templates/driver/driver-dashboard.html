@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Tourpal</title>
-    <link rel="stylesheet" href="/public/css/index.css">
+    <link rel="stylesheet" href="/public/css/driver-dashboard.css">
 </head>
 <body>
     
@@ -24,7 +24,6 @@
             </div>
         <nav>
             <ul>
-                <li><a href="/public/templates/customer/settings.html">Account Settings</a></li>
                 <!-- <li><a href="#">Notifications</a></li> -->
                 <li><a href="/public/templates/logout.html" id="logout"><i class="fa fa-user" aria-hidden="true"></i> Log out - </a></li>
 
@@ -35,7 +34,9 @@
         <h1>
             Driver Dashboard
         </h1>
-        <div id="upcomings"></div>
+        <div id="upcomings">
+            <h3>Pending Trips: </h3>
+        </div>
 
     </main>
 
@@ -69,31 +70,48 @@
         .collection('driver')
          .doc(sessionStorage.getItem("logged_in_uid"));
        console.log(categoryDocRef)
-    
+          console.log(sessionStorage.getItem("logged_in_uid"))
           //TODO: filter according to logged in user onlyyyyyyyyyyyyyyyyyyyyyyyyyy
           // TODO: 
           db.collection("trip").where('driver', '==', categoryDocRef).get().then((querySnapshot) => {
               querySnapshot.forEach((doc) => {
-                  // doc.data() is never undefined for query doc snapshots
-                  console.log(doc.id, " => ", doc.data());
-                  //body.innerHTML+=`<br>`
-                  //body.innerHTML+=`${doc.data().destination}`
-                  //body.innerHTML+=`${doc.id}`
                   const pdiv = document.createElement("article")
-                  pdiv.innerHTML = `
+                  fetch(`http://api.positionstack.com/v1/reverse?access_key=c5f0aee166d9e58c8177284029e1a94d&query=${doc.data().pickup_location.latitude},${doc.data().pickup_location.longitude}`)
+                  .then(response => response.json())
+                  .then(d => {
+                    console.log('Success:', d["data"][0].label);
+                    console.log(doc.data())
+                                      pdiv.innerHTML = `
                     <ul>
                         <li>
-                            ${doc.id}
+                            Trip id: ${doc.id}
                         </li>
                         <li>
-                            ${doc.data().startdate}
+                            Experience: ${doc.data().experience_selected.id}
+
                         </li>
+                        <li>
+                            Starting: ${doc.data().startdate.toDate()}
+                        </li>
+                        <li>
+                            Customer: ${doc.data().customer.id}
+                        </li>
+                        <li>
+                            Pickup: ${d["data"][0].label}
+                        </li>
+                        
                     </ul>
                     <br>
                   `
     
     
                   upcomings.appendChild(pdiv)
+                  
+                  })
+                  .catch((error) => {
+                    console.error('Error:', error);
+                  });
+
                   
                 });
           });
