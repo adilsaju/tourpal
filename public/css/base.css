@@ -234,6 +234,7 @@ header nav {
         align-items: center;
         justify-content: space-between;
         height: fit-content;
+        box-shadow: rgb(197, 189, 189) 3px 0px 10px;
     }
 
     header > div:nth-of-type(1) i  {
@@ -261,7 +262,7 @@ header nav {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    header, footer, #cur_exp, .main-section, #src, .main_landing {
+    header, footer, #cur_exp, .main-section, #src, .main_landing, .trips-section {
         grid-column: 1/-1;
     }
     
