@@ -49,13 +49,13 @@ const firebaseApp = firebase.initializeApp({
       
             pdiv.innerHTML = `
             <ul>
-            <li>Cost: $${data2.cost}</li>
-            <li>Pickup from: ${sessionStorage.getItem("customerLocation")}</li>
-            <li>Destination City: ${sessionStorage.getItem("city")}</li>
-            <li>Experience: ${data2.name}</li>
-            <li>Depart Time: ${sessionStorage.getItem("departDateTime")}</li>
-            <li>Driver: ${data.name}</li>
-            <li>Trip id: ${doc.id}</li>
+            <li><span>Cost:</span> $${data2.cost}</li>
+            <li><span>Pickup from:</span> ${sessionStorage.getItem("customerLocation")}</li>
+            <li><span>Destination City:</span> ${sessionStorage.getItem("city")}</li>
+            <li><span>Experience:</span> ${data2.name}</li>
+            <li><span>Depart Time:</span> ${sessionStorage.getItem("departDateTime")}</li>
+            <li><span>Driver:</span> ${data.name}</li>
+            <li><span>Trip id:</span> ${doc.id}</li>
 
             </ul>
             `
