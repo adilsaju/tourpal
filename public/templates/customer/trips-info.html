@@ -37,20 +37,18 @@
     </nav>
 </header>
 
-<main>
+<main class="trips-info-main">
     <div id="back">
 
     </div>
-    <h3>
-        More Info
-
-    </h3>
-
-    <div id="confirmed_trip">
-
+    <div class="trips-info-section">
+        <h3>
+            More Info
+        </h3>
+        <div id="confirmed_trip">
+        </div>
+        <button onclick="deleteData()">Cancel trip</button>
     </div>
-
-    <button onclick="deleteData()">Cancel trip</button>
 </main>
 
 
@@ -115,12 +113,12 @@
                 pdiv.innerHTML = `
                 <ul>
 
-                    <li>Id: ${trip_id}</li>
-                    <li>Booked Date: ${data.bookdate.toDate()}</li>
-                    <li>Depart Time: ${data.startdate.toDate()}</li>
-        <li>End Time: ${data.enddate.toDate()}</li>
-        <li>Experience: ${querySnapshot2.data().name}</li>
-        <li>Driver: ${querySnapshot3.data().name}</li>
+                    <li><span>Id:</span> ${trip_id}</li>
+                    <li><span>Booked Date:</span> ${data.bookdate.toDate()}</li>
+                    <li><span>Depart Time:</span> ${data.startdate.toDate()}</li>
+        <li><span>End Time:</span> ${data.enddate.toDate()}</li>
+        <li><span>Experience:</span> ${querySnapshot2.data().name}</li>
+        <li><span>Driver:</span> ${querySnapshot3.data().name}</li>
         
         
     </ul>
