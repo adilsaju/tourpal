@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;700&display=swap');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 @import "reset.css";
 ul {
     list-style-type: none;
@@ -7,6 +8,10 @@ ul {
 }
 a {
     text-decoration: none;
+}
+
+h1,h2,h3,h4,h5,h6,a,p,span,label,input,button,ul,li,div{
+    font-family: 'Poppins', sans-serif;
 }
 
 /* img{
