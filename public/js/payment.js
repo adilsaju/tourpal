@@ -12,7 +12,7 @@ const firebaseApp = firebase.initializeApp({
   const db = firebaseApp.firestore();
   
 
-    
+    let payment;
   
     window.onload = function() {
     const confirmed_trip = document.querySelector("#confirmed_trip")
@@ -46,10 +46,11 @@ const firebaseApp = firebase.initializeApp({
             const data2 = querySnapshot.data();
             console.log("========================")
             console.log(data2.name)
-      
+            payment = data2.cost
+            console.log(payment, 'payment')
             pdiv.innerHTML = `
             <ul>
-            <li><span>Cost:</span> $${data2.cost}</li>
+            <li><span>Cost:</span> ${data2.cost}</li>
             <li><span>Pickup from:</span> ${sessionStorage.getItem("customerLocation")}</li>
             <li><span>Destination City:</span> ${sessionStorage.getItem("city")}</li>
             <li><span>Experience:</span> ${data2.name}</li>
@@ -79,4 +80,43 @@ confirmed_trip.appendChild(pdiv)
 
 
 
+    }
+
+    const CHARGE_URL= new URL('https://api.stripe.com/v1/charges');
+    const AMOUNT=payment;
+    const CURRENCY='cad';
+    const SOURCE='tok_amex';
+    const DESCRIPTION='Testing AMEX charge';
+    
+    CHARGE_URL.search = new URLSearchParams({
+        amount: AMOUNT,
+        currency: CURRENCY,
+        source: SOURCE,
+        description: DESCRIPTION
+    });
+    
+    async function userAction(){
+      debugger;
+      console.log(payment, 'after payment')
+      paymentRequest()
+      .then(res => { 
+        handleResponse(res) 
+      })
+      .catch(error=>{
+        console.error(error);
+      });
+    }
+    
+    async function paymentRequest(){
+      return fetch( CHARGE_URL, {
+        method: 'POST',
+        headers: {
+          'Authorization':'Bearer sk_test_51LKswSLCIaFrG67pVpw4FsV39q9CS7Ji8CG0A9FFyVy58Nra3iyR2Ue6A4TAFQwAEuQoxexEayGHTTknSCXvdekk007IfXzs4Q',
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      });
+    }
+    
+    async function handleResponse(response){
+      console.log('Response => ',response);
     }
