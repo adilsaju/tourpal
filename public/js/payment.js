@@ -96,7 +96,7 @@ confirmed_trip.appendChild(pdiv)
     });
     
     async function userAction(){
-      debugger;
+      
       console.log(payment, 'after payment')
       paymentRequest()
       .then(res => { 
