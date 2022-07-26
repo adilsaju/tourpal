@@ -12,7 +12,7 @@ const firebaseApp = firebase.initializeApp({
   const db = firebaseApp.firestore();
   
 
-    let payment;
+    var payment;
   
     window.onload = function() {
     const confirmed_trip = document.querySelector("#confirmed_trip")
@@ -47,7 +47,6 @@ const firebaseApp = firebase.initializeApp({
             console.log("========================")
             console.log(data2.name)
             payment = data2.cost
-            console.log(payment, 'payment')
             pdiv.innerHTML = `
             <ul>
             <li><span>Cost:</span> ${data2.cost}</li>
@@ -81,22 +80,16 @@ confirmed_trip.appendChild(pdiv)
 
 
     }
-
-    const CHARGE_URL= new URL('https://api.stripe.com/v1/charges');
-    const AMOUNT=payment;
-    const CURRENCY='cad';
-    const SOURCE='tok_amex';
-    const DESCRIPTION='Testing AMEX charge';
-    
-    CHARGE_URL.search = new URLSearchParams({
-        amount: AMOUNT,
-        currency: CURRENCY,
-        source: SOURCE,
-        description: DESCRIPTION
+    const snapshot2 = db
+    .collection('experience')
+    .doc(sessionStorage.getItem("experienceSelected")).get().then((querySnapshot)=>{
+      const data2 = querySnapshot.data();
+      console.log("========================")
+      console.log(data2.name)
+      payment = data2.cost
     });
-    
+
     async function userAction(){
-      
       console.log(payment, 'after payment')
       paymentRequest()
       .then(res => { 
@@ -107,7 +100,21 @@ confirmed_trip.appendChild(pdiv)
       });
     }
     
-    async function paymentRequest(){
+    function paymentRequest(){
+
+      const CHARGE_URL= new URL('https://api.stripe.com/v1/charges');
+    const AMOUNT=payment;
+    const CURRENCY='cad';
+    const SOURCE='tok_amex';
+    const DESCRIPTION='Testing Charge';
+    
+    CHARGE_URL.search = new URLSearchParams({
+        amount: AMOUNT*100,
+        currency: CURRENCY,
+        source: SOURCE,
+        description: DESCRIPTION
+    });
+
       return fetch( CHARGE_URL, {
         method: 'POST',
         headers: {
