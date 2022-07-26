@@ -122,10 +122,16 @@ form div label{
 
 #add {
     background-color:  rgb(235,60,86);
-    border: none;
+    border: 2px solid #EA2B49;
     border-radius: 1.5rem;
     width: 100%;
     color: white;
+}
+
+#add:hover{
+    background-color: white;
+    color: #EA2B49;
+    border: 2px solid #EA2B49;
 }
 
 #menu {

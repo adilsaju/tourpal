@@ -31,10 +31,11 @@
         </nav>
     </header>
     <main>
-        <h1>
-            Driver Dashboard
-        </h1>
+        
         <div id="upcomings">
+            <h1>
+                Driver Dashboard
+            </h1>
             <h3>Pending Trips: </h3>
         </div>
 
@@ -93,20 +94,20 @@
                             pdiv.innerHTML = `
                             <ul>
                                 <li>
-                                    Trip id: ${doc.id}
+                                    <span>Trip id:</span> ${doc.id}
                                 </li>
                                 <li>
-                                    Experience: ${querySnapshot2.data().name}
+                                    <span>Experience:</span> ${querySnapshot2.data().name}
         
                                 </li>
                                 <li>
-                                    Starting: ${doc.data().startdate.toDate()}
+                                    <span>Starting:</span> ${doc.data().startdate.toDate()}
                                 </li>
                                 <li>
-                                    Customer: ${querySnapshot3.data().name}
+                                    <span>Customer:</span> ${querySnapshot3.data().name}
                                 </li>
                                 <li>
-                                    Pickup: ${d["data"][0].label}
+                                    <span>Pickup:</span> ${d["data"][0].label}
                                 </li>
                                 
                             </ul>
