@@ -10,7 +10,8 @@ const firebaseApp = firebase.initializeApp({
   measurementId: "G-G9LL7MBNG0"
 });
 const db = firebaseApp.firestore();
-
+const departTime = new Date(sessionStorage.getItem(('departDateTime')));
+const arriveTime = new Date(sessionStorage.getItem(('finishDateTime')));
 
 
 function pick_fn(e) {
@@ -60,8 +61,8 @@ function yourfunction() {
       <ul>
     <li><a href="#" onclick="goBack()" ><i class="fas fa-arrow-left"></i></a></li>
       <li  class="location-experiences" >${sessionStorage.getItem('city')}</li>
-      <li>${sessionStorage.getItem('departDateTime')}</li>
-      <li>${sessionStorage.getItem('finishDateTime')}</li>
+      <li>${departTime.toDateString(sessionStorage.getItem(('departDateTime')))}</li>
+      <li>${arriveTime.toDateString(sessionStorage.getItem('finishDateTime'))}</li>
       <li>${sessionStorage.getItem('noOfPeople')}</li>
       <li>${data.name}</li>
     

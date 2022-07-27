@@ -83,10 +83,7 @@ header img {
     margin: auto;
 }
 
-header nav {
-    /* FIXME: */
-    /* transition: all 1s ease-in; */
-}
+
 
 .hide {
     display: none;
@@ -111,12 +108,13 @@ h2 {
     grid-column: 1/-1;
 }
 
+
 .history img, .upcomings img {
     max-width: 16rem;
     border-radius: 2rem;
 }
 
-.upcomings {
+/* .upcomings {
     display: grid;
     grid-gap: 1rem;
     background-color: rgb(250, 243, 243);
@@ -125,8 +123,11 @@ h2 {
     padding: 1rem 0;
     border-radius: 20px;
     margin-top: 1rem;
+} */
+.upcomings{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
-
 .upcomings h3 {
     color: black;
     font-weight: bolder;
@@ -157,7 +158,12 @@ article a{
     text-align: center;
     padding-top: 100%;
 }
-
+ul {
+   color: black;
+}
+div ul li {
+    padding: 1rem 0   ;
+}
 @media screen and (min-width: 1000px) {
 
     

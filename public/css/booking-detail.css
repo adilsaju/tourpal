@@ -23,21 +23,9 @@ main{
 
 #confirmed_trip ul li{
     color: #ea2b49;
-}
-
-.payment-card{
-    display: flex;
-    flex-flow: column wrap;
-    gap: 1rem;
-}
-
-.payment-card input{
-    width: 100%;
-    padding: 1rem;
     text-align: center;
-    font-weight: bolder;
-    border-radius: 20px;
 }
+
 
 .confirm{
     width: 100%;
@@ -47,11 +35,7 @@ main{
     border: none;
     border-radius: 25px;
 }
-.payment-card-imp-detail{
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
-    grid-gap: 1rem;
-}
+
 .payment-card p{
     font-weight: bolder;
 }
@@ -86,7 +70,7 @@ main{
     .payment-card > a,
     .payment-card input,
     .payment-heading{
-        /* width: 70%; */
+        width: 70%;
         align-self: center;
     }
 

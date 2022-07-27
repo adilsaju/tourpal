@@ -36,7 +36,6 @@
     <div id="body1">
         <div class="upcomings" id="upcomings">
             <h3>Upcomings Trips</h3>
-
         </div>
 
         <div class="history" id="history">
@@ -86,18 +85,60 @@
           let links= document.querySelectorAll(".entry_link")
           let myArray = Array.from(links)
           querySnapshot.forEach((doc) => {
+
+            db.collection('experience').doc(doc.data().experience_selected.id).get().then((querySnapshot2)=>{
+
+                        db.collection('customer').doc(doc.data().customer.id).get().then((querySnapshot3)=>{
+
+                            db.collection('driver').doc(doc.data().driver.id).get().then((querySnapshot4)=>{
+
+                            pdiv.innerHTML = `
+                        
+                            
+                            <ul>
+                                <li>
+                                    <img src = "${querySnapshot2.data().picture}">
+                                </li>
+                                <li>
+                                    <h2>Booking ID :${doc.id}</h2>
+                                </li>
+                                <li>
+                                    <span>Experience:</span> ${querySnapshot2.data().name}
+        
+                                </li>
+                                <li>
+                                    <span>Starting:</span> ${doc.data().startdate.toDate()}
+                                </li>
+                                <li>
+                                    <span>Driver:</span> ${querySnapshot4.data().name}
+                                </li>
+                        
+                                
+                            </ul>
+                           
+                            <br>
+                          `
+                        });
+                        });
+
+
+                     
+                    });
               // doc.data() is never undefined for query doc snapshots
-              console.log(doc.id, " => ", doc.data());
+              //console.log(doc.id, " => ", doc.data());
               //body.innerHTML+=`<br>`
               //body.innerHTML+=`${doc.data().destination}`
               //body.innerHTML+=`${doc.id}`
               const pdiv = document.createElement("article")
               pdiv.innerHTML = `
-              <h2>
-                <a href="/public/templates/customer/trips-info.html?id=${doc.id}" class="entry_link">${doc.id}</a>
-            </h2>
-            <div class="feature-image"><img src="https://picsum.photos/800/800?random=${i}" alt=""></div>
+        
+
+            
               `
+
+
+            
+
 
 
               upcomings.appendChild(pdiv)
