@@ -176,7 +176,10 @@ header nav {
     display: none;
 
 }
-
+nav ul li{
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
 
 
 #menu {
