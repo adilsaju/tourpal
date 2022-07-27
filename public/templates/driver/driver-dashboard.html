@@ -104,7 +104,7 @@
                                     <span>Customer:</span> ${querySnapshot3.data().name}
                                 </li>
                                 <li style="font-size: 1.3rem"  >
-                                    <span>Starting:</span> ${doc.data().startdate.toDate()}
+                                    <span>Starting:</span> ${doc.data().startdate.toDate().toString().split(' ', 4).join(' ')}
                                 </li>
                                 <li>
                                     <span>Pickup:</span> ${d["data"][0].label}
