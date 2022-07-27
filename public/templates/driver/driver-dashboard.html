@@ -74,7 +74,7 @@
           console.log(sessionStorage.getItem("logged_in_uid"))
           //TODO: filter according to logged in user onlyyyyyyyyyyyyyyyyyyyyyyyyyy
           // TODO: 
-          db.collection("trip").where('driver', '==', categoryDocRef).orderBy("startdate").get().then((querySnapshot) => {
+          db.collection("trip").where('driver', '==', categoryDocRef).orderBy("startdate", "desc").get().then((querySnapshot) => {
               querySnapshot.forEach((doc) => {
                   const pdiv = document.createElement("article")
                   fetch(`http://api.positionstack.com/v1/reverse?access_key=c5f0aee166d9e58c8177284029e1a94d&query=${doc.data().pickup_location.latitude},${doc.data().pickup_location.longitude}`)
@@ -101,10 +101,10 @@
         
                                 </li>
                                 <li>
-                                    <span>Starting:</span> ${doc.data().startdate.toDate()}
-                                </li>
-                                <li>
                                     <span>Customer:</span> ${querySnapshot3.data().name}
+                                </li>
+                                <li style="font-size: 1.3rem"  >
+                                    <span>Starting:</span> ${doc.data().startdate.toDate()}
                                 </li>
                                 <li>
                                     <span>Pickup:</span> ${d["data"][0].label}
