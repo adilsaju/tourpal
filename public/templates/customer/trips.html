@@ -79,7 +79,7 @@
     let future = new Date();
 
       //TODO: filter according to logged in user onlyyyyyyyyyyyyyyyyyyyyyyyyyy
-      db.collection("trip").where('customer', '==', categoryDocRef).where('startdate', '>=', future).orderBy("startdate", "desc").get().then((querySnapshot) => {
+      db.collection("trip").where('customer', '==', categoryDocRef).where('startdate', '>=', future).orderBy("startdate", "asc").get().then((querySnapshot) => {
           let links= document.querySelectorAll(".entry_link")
           let myArray = Array.from(links)
           querySnapshot.forEach((doc) => {
@@ -119,7 +119,7 @@
             pdiv.innerHTML = `
             <h2>
                 
-                <a href="/public/templates/customer/trips-info.html?id=${doc.id}" class="entry_link">${doc.id}</a>
+                <a href="/public/templates/customer/trips-info.html?id=${doc.id}" class="entry_link">${doc.id}</a> 
                 <span class="sp" >${dtt} </span>
           </h2>
           <div class="feature-image"><img src="https://picsum.photos/800/800?random=${i}" alt=""></div>
