@@ -61,7 +61,7 @@ header{
 }
 main{
     padding: 1rem;
-    height: 86vh;
+    /* height: 86vh; */
 }
 img{
     width:100%;
