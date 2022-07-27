@@ -1,6 +1,13 @@
 @import "base.css";
 
 /* @import "login.css"; */
+.sp {
+    color: white;
+    align-items: center;
+    align-self: center;
+    text-align: center;
+}
+
 body {
     
     margin: 0;
@@ -124,11 +131,11 @@ h2 {
     border-radius: 20px;
     margin-top: 1rem;
 } */
-.upcomings{
+.upcomings, .history{
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
-.upcomings h3 {
+.upcomings h3 , .history h3{
     color: black;
     font-weight: bolder;
     text-align: center;
@@ -202,13 +209,13 @@ div ul li {
         grid-gap: .5rem;
     }
     
-    .upcomings{
+    .upcomings, .history{
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
         grid-gap: 1.5rem;
         padding: 1rem;
     }
 
-    .upcomings h3{
+    .upcomings h3, .history h3{
         grid-column: 1/-1;
     }
 }
