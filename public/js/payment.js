@@ -125,5 +125,14 @@ confirmed_trip.appendChild(pdiv)
     }
     
     async function handleResponse(response){
-      console.log('Response => ',response);
+      if (response.ok) {
+        console.log('Response true => ',response);
+        document.querySelector('.outputPayment').innerHTML = 'Payment made Successfully';
+        window.location.href = `/public/templates/booking-detail.html`
+        return;
+      }else{
+        document.querySelector('.outputPayment').innerHTML = 'Payment unsuccessfull';
+      }
+
+      console.log('Response false => ',response);
     }

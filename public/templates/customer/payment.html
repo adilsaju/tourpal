@@ -38,14 +38,20 @@
         </div>
         <div class="payment-card">
             <p class="payment-heading">Payment info :</p>
-            <input type="text" value="VISA 1234 5678 0987 3211"></input>
+            <!-- <input type="text" value="VISA 1234 5678 0987 3211"></input> -->
+            <input type="text" placeholder="1111-2222-3333-4444" required></input>
+            <div class="payment-card-imp-detail">
+                <input type="text" placeholder="(mm/yy)" required></input>
+                <input type="password" placeholder="cvv" required></input>
+            </div>
             <a href="/public/templates/customer/../booking-detail.html">
                 <!-- <button>Confirm payment</button> -->
             </a>
         </div>
-        <a href="/public/templates/customer/../booking-detail.html">
+        
         <input type="button" name ="PAY" class="confirm" value="Confirm payment" onclick = "userAction()" />
-    </a>
+   
+    <p class="outputPayment"></p>
 
     </main>
 

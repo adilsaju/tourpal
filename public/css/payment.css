@@ -47,7 +47,11 @@ main{
     border: none;
     border-radius: 25px;
 }
-
+.payment-card-imp-detail{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-gap: 1rem;
+}
 .payment-card p{
     font-weight: bolder;
 }
@@ -82,7 +86,7 @@ main{
     .payment-card > a,
     .payment-card input,
     .payment-heading{
-        width: 70%;
+        /* width: 70%; */
         align-self: center;
     }
 
