@@ -79,7 +79,7 @@
     let future = new Date();
 
       //TODO: filter according to logged in user onlyyyyyyyyyyyyyyyyyyyyyyyyyy
-      db.collection("trip").where('customer', '==', categoryDocRef).where('startdate', '>', future).orderBy("startdate", "desc").get().then((querySnapshot) => {
+      db.collection("trip").where('customer', '==', categoryDocRef).where('startdate', '>=', future).orderBy("startdate", "desc").get().then((querySnapshot) => {
           let links= document.querySelectorAll(".entry_link")
           let myArray = Array.from(links)
           querySnapshot.forEach((doc) => {
