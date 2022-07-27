@@ -36,10 +36,11 @@
     <div id="body1">
         <div class="upcomings" id="upcomings">
             <h3>Upcomings Trips</h3>
+
         </div>
 
         <div class="history" id="history">
-            <!-- <h3>history</h3> -->
+            <h3>history</h3>
 
         </div>
 
@@ -75,79 +76,60 @@
       .collection('customer')
       .doc(sessionStorage.getItem("logged_in_uid"));
     console.log(categoryDocRef)
+    let future = new Date();
 
       //TODO: filter according to logged in user onlyyyyyyyyyyyyyyyyyyyyyyyyyy
-      db.collection("trip").where('customer', '==', categoryDocRef).get().then((querySnapshot) => {
+      db.collection("trip").where('customer', '==', categoryDocRef).where('startdate', '>=', future).orderBy("startdate", "desc").get().then((querySnapshot) => {
           let links= document.querySelectorAll(".entry_link")
           let myArray = Array.from(links)
           querySnapshot.forEach((doc) => {
-
-            db.collection('experience').doc(doc.data().experience_selected.id).get().then((querySnapshot2)=>{
-
-                        db.collection('customer').doc(doc.data().customer.id).get().then((querySnapshot3)=>{
-
-                            db.collection('driver').doc(doc.data().driver.id).get().then((querySnapshot4)=>{
-
-                            pdiv.innerHTML = `
-                        
-                            
-                            <ul>
-                                <li>
-                                    <img src = "${querySnapshot2.data().picture}">
-                                </li>
-                                <li>
-                                    <h2>Booking ID :${doc.id}</h2>
-                                </li>
-                                <li>
-                                    <span>Experience:</span> ${querySnapshot2.data().name}
-        
-                                </li>
-                                <li>
-                                    <span>Starting:</span> ${doc.data().startdate.toDate()}
-                                </li>
-                                <li>
-                                    <span>Driver:</span> ${querySnapshot4.data().name}
-                                </li>
-                        
-                                
-                            </ul>
-                           
-                            <br>
-                          `
-                        });
-                        });
-
-
-                     
-                    });
               // doc.data() is never undefined for query doc snapshots
-              //console.log(doc.id, " => ", doc.data());
+              console.log(doc.id, " => ", doc.data());
               //body.innerHTML+=`<br>`
               //body.innerHTML+=`${doc.data().destination}`
               //body.innerHTML+=`${doc.id}`
               const pdiv = document.createElement("article")
+              let dtt = doc.data().startdate.toDate().toString().split(' ', 4).join(' ');
               pdiv.innerHTML = `
-        
+              <h2>
+                <span class="sp" >${dtt} </span>
 
-            
+                <a href="/public/templates/customer/trips-info.html?id=${doc.id}" class="entry_link">${doc.id}</a>
+            </h2>
+            <div class="feature-image"><img src="https://picsum.photos/800/800?random=${i}" alt=""></div>
               `
-
-
-            
-
-
-
               upcomings.appendChild(pdiv)
-
-              
-              //myArray[i].innerHTML = `${doc.id}`
-              //myArray[i].href = `/public/templates/customer/trips-info.html?id=${doc.id}`
-              
-
               console.log(doc.id)
               //myArray[0].innerHTML = "assad"
               i++;
             });
       });
+      db.collection("trip").where('customer', '==', categoryDocRef).where('startdate', '<', future).orderBy("startdate", "desc").get().then((querySnapshot) => {
+        let links= document.querySelectorAll(".entry_link")
+        let myArray = Array.from(links)
+        querySnapshot.forEach((doc) => {
+            // doc.data() is never undefined for query doc snapshots
+            console.log(doc.id, " => ", doc.data());
+            //body.innerHTML+=`<br>`
+            //body.innerHTML+=`${doc.data().destination}`
+            //body.innerHTML+=`${doc.id}`
+            const pdiv = document.createElement("article")
+            let dtt = doc.data().startdate.toDate().toString().split(' ', 4).join(' ');
+
+            pdiv.innerHTML = `
+            <h2>
+                <span class="sp" >${dtt} </span>
+
+              <a href="/public/templates/customer/trips-info.html?id=${doc.id}" class="entry_link">${doc.id}</a>
+          </h2>
+          <div class="feature-image"><img src="https://picsum.photos/800/800?random=${i}" alt=""></div>
+            `
+            document.querySelector("#history").appendChild(pdiv)
+            
+            console.log(doc.id)
+            //myArray[0].innerHTML = "assad"
+            i++;
+          });
+    });
 </script>
 </html>

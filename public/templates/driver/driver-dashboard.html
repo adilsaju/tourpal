@@ -32,11 +32,14 @@
     </header>
     <main>
         
+        <h1>
+            Driver Dashboard
+        </h1>
         <div id="upcomings">
-            <h1>
-                Driver Dashboard
-            </h1>
-            <h3>Pending Trips: </h3>
+            <h3>Upcoming Trips: </h3>
+        </div>
+        <div id="history">
+            <h3>History: </h3>
         </div>
 
     </main>
@@ -72,9 +75,11 @@
          .doc(sessionStorage.getItem("logged_in_uid"));
        console.log(categoryDocRef)
           console.log(sessionStorage.getItem("logged_in_uid"))
+    let future = new Date();
+
           //TODO: filter according to logged in user onlyyyyyyyyyyyyyyyyyyyyyyyyyy
           // TODO: 
-          db.collection("trip").where('driver', '==', categoryDocRef).orderBy("startdate").get().then((querySnapshot) => {
+          db.collection("trip").where('driver', '==', categoryDocRef).where('startdate', '>=', future).orderBy("startdate", "desc").get().then((querySnapshot) => {
               querySnapshot.forEach((doc) => {
                   const pdiv = document.createElement("article")
                   fetch(`http://api.positionstack.com/v1/reverse?access_key=c5f0aee166d9e58c8177284029e1a94d&query=${doc.data().pickup_location.latitude},${doc.data().pickup_location.longitude}`)
@@ -101,10 +106,10 @@
         
                                 </li>
                                 <li>
-                                    <span>Starting:</span> ${doc.data().startdate.toDate()}
-                                </li>
-                                <li>
                                     <span>Customer:</span> ${querySnapshot3.data().name}
+                                </li>
+                                <li style="font-size: 1.3rem"  >
+                                    <span>Starting:</span> ${doc.data().startdate.toDate().toString().split(' ', 4).join(' ')}
                                 </li>
                                 <li>
                                     <span>Pickup:</span> ${d["data"][0].label}
@@ -132,6 +137,66 @@
                   
                 });
           });
+
+
+          db.collection("trip").where('driver', '==', categoryDocRef).where('startdate', '<', future).orderBy("startdate", "desc").get().then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                const pdiv = document.createElement("article")
+                fetch(`http://api.positionstack.com/v1/reverse?access_key=c5f0aee166d9e58c8177284029e1a94d&query=${doc.data().pickup_location.latitude},${doc.data().pickup_location.longitude}`)
+                .then(response => response.json())
+                .then(d => {
+                  console.log('Success:', d["data"][0].label);
+                  console.log(doc.data())
+
+                  db
+                  .collection('experience')
+                  .doc(doc.data().experience_selected.id).get().then((querySnapshot2)=>{
+
+                      db
+                      .collection('customer')
+                      .doc(doc.data().customer.id).get().then((querySnapshot3)=>{
+
+                          pdiv.innerHTML = `
+                          <ul>
+                              <li>
+                                  <span>Trip id:</span> ${doc.id}
+                              </li>
+                              <li>
+                                  <span>Experience:</span> ${querySnapshot2.data().name}
+      
+                              </li>
+                              <li>
+                                  <span>Customer:</span> ${querySnapshot3.data().name}
+                              </li>
+                              <li style="font-size: 1.3rem"  >
+                                  <span>Starting:</span> ${doc.data().startdate.toDate().toString().split(' ', 4).join(' ')}
+                              </li>
+                              <li>
+                                  <span>Pickup:</span> ${d["data"][0].label}
+                              </li>
+                              
+                          </ul>
+                          <br>
+                        `
+          
+                      });
+
+
+                   
+                  });
+
+
+  
+                history.appendChild(pdiv)
+                
+                })
+                .catch((error) => {
+                  console.error('Error:', error);
+                });
+
+                
+              });
+        });
     </script>
 </body>
 </html>

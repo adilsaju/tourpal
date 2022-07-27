@@ -1,6 +1,6 @@
 @import "base.css";
 
-#upcomings{
+#upcomings, #history{
     display: grid;
     grid-gap: 1rem;
 }
@@ -22,9 +22,14 @@ article ul li{
     color: #EA2B49;
 }
 
+#history {
+    background-color: rgba(128, 128, 128, 0.257);
+    border-radius: 1rem;
+}
+
 @media screen and (min-width: 700px){
 
-    #upcomings{
+    #upcomings, #history{
         max-width: 80%;
         margin: auto;
     }
@@ -32,25 +37,25 @@ article ul li{
 
 @media screen and (min-width: 1000px){
 
-    main{
+     main{
         grid-column: 1/-1;
     }
 
-    #upcomings{
+    /* #upcomings{
         grid-template-columns: repeat(2,1fr );
-    }
+    } */
 
-    #upcomings h1,
+    /* #upcomings h1,
     #upcomings h3{
         grid-column: 1/-1;
-    }
+    }  */
 }
 
 @media screen and (min-width: 1500px){
 
-    #upcomings{
+    /* #upcomings{
         grid-template-columns: repeat(3,1fr );
-    }
+    } */
 }
 
 
