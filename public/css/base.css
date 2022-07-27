@@ -285,7 +285,7 @@ header nav {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    header, footer, #cur_exp, .main-section, #src, .main_landing, .trips-section {
+    header, footer, #cur_exp, .main-section, #src, .main_landing, .trips-section, .form_wrapper_register {
         grid-column: 1/-1;
     }
     
