@@ -161,7 +161,7 @@ form{
 }
 
 .form_wrapper_register{
-    height: 100vh;
+    /* height: 100vh; */
     display: flex;
     flex-direction: row;
     gap: 1rem;
@@ -226,13 +226,14 @@ form{
  @media screen and (min-width:750px) {
     #temp1, .sign_in{
         max-width: 300px;
+        width: 100%;
         margin:auto;
     }
     .register_form_image {
-        height: 100vh;
+        /* height: 100vh; */
     }
     .register_form{
-        height: 100vh;
+        /* height: 100vh; */
     }
 
     main{
