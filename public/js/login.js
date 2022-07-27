@@ -88,6 +88,13 @@ window.onload = function() {
   // const urlParams = new URLSearchParams(window.location.search);
   // const user_type = urlParams.get('user_type');
   // sessionStorage.setItem('user_type', user_type);
+   if ( sessionStorage.getItem('user_type') === "driver" )
+   {
+    // disable
+    // document.querySelector("#abc").href = "#" ; 
+    document.querySelector("#abc").style.display = "none";
+
+   }
 
     is_logged_in = sessionStorage.getItem('is_logged_in');
     
