@@ -105,10 +105,24 @@ h2 {
     font-size: 1rem;
 }
 
-.history {
+.upcomings, .history {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: .5rem;
+
+    grid-gap: 1rem;
+    background-color: rgb(250, 243, 243);
+    color: white;
+    justify-content: center;
+    padding: 1rem 0;
+    border-radius: 20px;
+    margin-top: 1rem;
+    
+}
+
+.upcomings img , .history img {
+    border-radius: 20px;
+
 }
 
 .history h3 {
@@ -116,10 +130,10 @@ h2 {
 }
 
 
-.history img, .upcomings img {
+/* .history img, .upcomings img {
     max-width: 16rem;
     border-radius: 2rem;
-}
+} */
 
 /* .upcomings {
     display: grid;
@@ -140,6 +154,9 @@ h2 {
     font-weight: bolder;
     text-align: center;
     font-size: 1.6rem;
+}
+.upcomings h3 {
+    grid-column: 1/-1;
 }
 
 article{
