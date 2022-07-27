@@ -61,6 +61,7 @@ header{
 }
 main{
     padding: 1rem;
+    height: 86vh;
 }
 img{
     width:100%;
@@ -141,10 +142,16 @@ button:hover{
 }
 
 /* ========= */
-header > div:nth-of-type(1) {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    /* align-items: center; */
+
+@media screen and (max-width: 999px){
+
+    .site-logo img{
+        max-width: 40%;
+    }
+}
+
+header > div:nth-of-type(1) > a > img {
+    
 }
 
 nav ul {
@@ -180,6 +187,7 @@ header nav {
 
 .footer-section, .register-footer{
     background-color: #ccc;
+    padding: 1rem;
 }
 .footer-section p, .register-footer p{
     padding: 0 0 0 1rem;

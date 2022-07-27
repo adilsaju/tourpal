@@ -1,18 +1,10 @@
 @import "base.css";
 
-@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;700&display=swap');
-/* @import "index.css" */
-
 body {
     
     margin: 0;
     padding: 0;
     line-height: 1.5;
-}
-
-h1, h2, h3, h4, h5, h6{
-    margin: 0;
-    font-family: 'Comfortaa', cursive;;
 }
 header{
     border-bottom: 1px solid #ccc;
@@ -21,6 +13,7 @@ header{
 .site-logo{
     text-align: center;
     padding: 1rem;
+    grid-template-columns: 1fr;
 }
 .site-logo img{
     width:80%;
@@ -249,6 +242,15 @@ form{
 
 @media screen and (min-width:900px) {
     .article_container{
-        grid-template-columns: 1fr 1fr;
+        width: 60%;
+        margin: auto;
     }
  }
+
+ @media screen and (min-width: 1000px){
+ 
+     header{
+        justify-content: center;
+     }
+ }
+ 
