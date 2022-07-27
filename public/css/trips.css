@@ -165,6 +165,9 @@ article a{
     text-align: center;
     padding-top: 100%;
 }
+article h2 {
+    text-align: center;
+}
 ul {
    color: black;
 }

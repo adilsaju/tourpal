@@ -92,9 +92,9 @@
               let dtt = doc.data().startdate.toDate().toString().split(' ', 4).join(' ');
               pdiv.innerHTML = `
               <h2>
-                <span class="sp" >${dtt} </span>
-
-                <a href="/public/templates/customer/trips-info.html?id=${doc.id}" class="entry_link">${doc.id}</a>
+                  
+                  <a href="/public/templates/customer/trips-info.html?id=${doc.id}" class="entry_link">${doc.id}</a>
+                  <span class="sp" >${dtt} </span>
             </h2>
             <div class="feature-image"><img src="https://picsum.photos/800/800?random=${i}" alt=""></div>
               `
@@ -118,9 +118,9 @@
 
             pdiv.innerHTML = `
             <h2>
+                
+                <a href="/public/templates/customer/trips-info.html?id=${doc.id}" class="entry_link">${doc.id}</a>
                 <span class="sp" >${dtt} </span>
-
-              <a href="/public/templates/customer/trips-info.html?id=${doc.id}" class="entry_link">${doc.id}</a>
           </h2>
           <div class="feature-image"><img src="https://picsum.photos/800/800?random=${i}" alt=""></div>
             `
