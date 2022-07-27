@@ -49,7 +49,7 @@ const firebaseApp = firebase.initializeApp({
             payment = data2.cost
             pdiv.innerHTML = `
             <ul>
-            <li><span>Cost:</span> ${data2.cost}</li>
+            <li><span>Total:</span> $${data2.cost}</li>
             <li><span>Pickup from:</span> ${sessionStorage.getItem("customerLocation")}</li>
             <li><span>Destination City:</span> ${sessionStorage.getItem("city")}</li>
             <li><span>Experience:</span> ${data2.name}</li>
