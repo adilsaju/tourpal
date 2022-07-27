@@ -15,6 +15,10 @@ main{
 #confirmed_trip ul span{
     color: #151862;
     font-weight: bolder;
+    
+}
+#confirmed_trip ul{
+    font-size: x-large;
 }
 
 #confirmed_trip ul li{
@@ -35,9 +39,9 @@ main{
     border-radius: 20px;
 }
 
-.payment-card > a > button{
+.confirm{
     width: 100%;
-    padding: .5rem;
+    padding: 1.5rem;
     color: white;
     background-color: #ea2b49;
     border: none;
