@@ -112,7 +112,9 @@ console.log(touchingLayer)
 
 
 })
-
+function goBack(){
+  history.back();
+}
 var handleResults = function(result){
 console.log(result)
     if(result.results){

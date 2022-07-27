@@ -51,7 +51,7 @@
             <div><label for="">Depart Date Time</label><br><input name="sdate" type="datetime-local" id="c100" onchange="DateCheck()" required></div>
             <div><label for="">Finish Date Time</label><br><input name="edate" type="datetime-local" id="c200" onchange="DateCheck()" required></div>
             <!-- <div><label for="">Duration</label><br><input type="number" id="f100" required></div> -->
-            <div><label for="">Number of people</label><br><input name="guest_count" type="number" id="p100" oninput="PCheck()" required></div>
+            <div><label for="">Number of people</label><br><input name="guest_count" type="number" id="p100" min="1" required></div>
             <div>
                 <!-- <input type="submit" value="Add" id="add"> -->
                 <button type="button" id="add">Search</button>
@@ -64,25 +64,28 @@
                 var UserEndDate = document.getElementById("c200").value;
                 var ToDate = new Date();
 
-                if (new Date(UserStartDate).getTime() <= ToDate.getTime()) {
-                    alert("The Date must be Bigger or Equal to today date");
+                if (new Date(UserStartDate).getTime() <= ToDate.getTime() ) {
+                    alert("You cannot choose a date from the past");
                     document.getElementById("c100").value = '';
                     return false;
                 }
                 if (new Date(UserEndDate).getTime() <= ToDate.getTime()) {
-                    alert("The Date must be Bigger or Equal to today date");
+                    alert("You cannot choose a date from the past");
+                    document.getElementById("c200").value = '';
+                    //return false;
+                    alert(new Date(UserEndDate).getTime()) 
+                }
+                else if(new Date(UserEndDate).getTime() <= new Date(UserStartDate).getTime()){
+
+                    alert("End date cannot be before start date");
                     document.getElementById("c200").value = '';
                     return false;
+                    
                 }
+                
+                
                 return true;
 }
-            function PCheck() {
-                var People = document.getElementById("p100").value;
-                if (People < 1){
-                    alert('bhakk bsdk')
-                    return false;
-                }
-            }
         </script>
 
     </main>
