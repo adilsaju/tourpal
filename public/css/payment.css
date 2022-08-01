@@ -56,6 +56,16 @@ main{
     font-weight: bolder;
 }
 
+/* Confirm Button */
+
+input.confirm{
+    padding: 1.5rem;
+    color: white;
+    background-color: #ea2b49;
+    border: none;
+    border-radius: 25px;
+}
+
 @media screen and (min-width: 550px){
 
     main{
@@ -107,6 +117,10 @@ main{
     #confirmed_trip,
     .payment-card{
         width: 80%;
+    }
+
+    input.confirm{
+        width: 40%;
     }
 }
 
