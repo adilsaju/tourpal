@@ -83,6 +83,11 @@
           let links= document.querySelectorAll(".entry_link")
           let myArray = Array.from(links)
           querySnapshot.forEach((doc) => {
+            const data = doc.data();
+
+            db
+            .collection('experience')
+            .doc(data.experience_selected.id).get().then((querySnapshot2)=>{
               // doc.data() is never undefined for query doc snapshots
               console.log(doc.id, " => ", doc.data());
               //body.innerHTML+=`<br>`
@@ -96,6 +101,8 @@
                   
                   <a href="/public/templates/customer/trips-info.html?id=${doc.id}" class="entry_link">${doc.id}</a>
                   <span class="sp" >${dtt} </span>
+                  <span class="sp" >${querySnapshot2.data().name} </span>
+
             </h2>
             <div class="feature-image"><img src="https://picsum.photos/800/800?random=${i}" alt=""></div>
               `
@@ -103,12 +110,23 @@
               console.log(doc.id)
               //myArray[0].innerHTML = "assad"
               i++;
+
+
+            })
+
+
             });
       });
       db.collection("trip").where('customer', '==', categoryDocRef).where('startdate', '<', future).orderBy("startdate", "desc").get().then((querySnapshot) => {
         let links= document.querySelectorAll(".entry_link")
         let myArray = Array.from(links)
         querySnapshot.forEach((doc) => {
+            const data = doc.data();
+
+            db
+            .collection('experience')
+            .doc(data.experience_selected.id).get().then((querySnapshot2)=>{
+
             // doc.data() is never undefined for query doc snapshots
             console.log(doc.id, " => ", doc.data());
             //body.innerHTML+=`<br>`
@@ -122,6 +140,8 @@
                 
                 <a href="/public/templates/customer/trips-info.html?id=${doc.id}" class="entry_link">${doc.id}</a> 
                 <span class="sp" >${dtt} </span>
+                <span class="sp" >${querySnapshot2.data().name} </span>
+
           </h2>
           <div class="feature-image"><img src="https://picsum.photos/800/800?random=${i}" alt=""></div>
             `
@@ -130,6 +150,8 @@
             console.log(doc.id)
             //myArray[0].innerHTML = "assad"
             i++;
+
+        });
           });
     });
 </script>
