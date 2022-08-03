@@ -43,7 +43,7 @@ function yourfunction() {
 
 const exps = document.querySelector("#exps")
 
-db.collection("experience").get().then((querySnapshot) => {
+db.collection("experience").where("city" , "==" , sessionStorage.getItem('city').toLowerCase() ).get().then((querySnapshot) => {
   querySnapshot.forEach((doc) => {
     // console.log(doc)
       // doc.data() is never undefined for query doc snapshots
