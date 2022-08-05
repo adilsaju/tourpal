@@ -1,1 +1,34 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 709.39 226.3"><defs><style>.cls-1{fill:#a7a9ac;}.cls-2{font-size:155.16px;font-family:Poppins-Bold, Poppins;font-weight:700;}.cls-2,.cls-4{fill:#26235e;}.cls-3{fill:#e92c4a;font-family:Poppins-Regular, Poppins;font-weight:400;letter-spacing:0em;}.cls-5{fill:#fff;}</style></defs><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><path class="cls-1" d="M153.94,133.84h552.3L199,108.35S164.92,134.88,153.94,133.84Z"/><text class="cls-2" transform="translate(0 132.27)">T<tspan class="cls-3" x="91.7" y="0">O</tspan><tspan x="213.66" y="0">URPAL</tspan></text><circle class="cls-4" cx="152.45" cy="77.99" r="40.13"/><circle class="cls-5" cx="152.74" cy="78.24" r="2.89"/><circle class="cls-5" cx="145.28" cy="74.12" r="1.37"/><circle class="cls-5" cx="153" cy="69.79" r="1.37"/><circle class="cls-5" cx="160.67" cy="73.99" r="1.37"/><circle class="cls-5" cx="160.67" cy="82.88" r="1.37"/><circle class="cls-5" cx="153.08" cy="87.3" r="1.37"/><circle class="cls-5" cx="145.15" cy="82.87" r="1.37"/><polygon class="cls-5" points="126.39 60.34 150.27 46.01 150.58 62.8 139.48 69.74 126.39 60.34"/><polygon class="cls-5" points="155.05 46.62 154.74 62.34 165.83 69.12 178.78 60.18 155.05 46.62"/><polygon class="cls-5" points="167.22 72.05 181.55 63.73 181.71 93.31 167.38 85.3 167.22 72.05"/><polygon class="cls-5" points="154.28 95.32 166.91 88.08 178.01 96.7 155.51 110.73 154.28 95.32"/><polygon class="cls-5" points="127.16 95.78 139.02 88.23 150.27 94.86 150.12 109.8 127.16 95.78"/><polygon class="cls-5" points="124.38 64.65 137.48 71.28 137.63 85.46 124.07 91.62 124.38 64.65"/></g></g></svg>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 26.0.2, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 711.7 226.3" style="enable-background:new 0 0 711.7 226.3;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#26235E;}
+	.st1{font-family:'Poppins-Bold';}
+	.st2{font-size:155.16px;}
+	.st3{fill:#E92C4A;}
+	.st4{font-family:'Poppins-Regular';}
+	.st5{fill:#FFFFFF;}
+</style>
+<g id="Layer_2_00000030466163244435630220000013351863155717867700_">
+	<g id="Layer_1-2">
+		<text transform="matrix(1 0 0 1 -2 167.27)" class="st0 st1 st2">T</text>
+		<text transform="matrix(1 0 0 1 89.7 167.27)" class="st3 st4 st2">   </text>
+		<text transform="matrix(1 0 0 1 213.98 167.27)" class="st0 st1 st2">URPAL</text>
+		<circle class="st3" cx="151.7" cy="114.2" r="55.5"/>
+		<circle class="st5" cx="152.1" cy="114.6" r="4"/>
+		<circle class="st5" cx="141.8" cy="108.9" r="1.9"/>
+		<circle class="st5" cx="152.5" cy="102.9" r="1.9"/>
+		<circle class="st5" cx="163.1" cy="108.7" r="1.9"/>
+		<circle class="st5" cx="163.1" cy="121" r="1.9"/>
+		<circle class="st5" cx="152.6" cy="127.1" r="1.9"/>
+		<circle class="st5" cx="141.6" cy="121" r="1.9"/>
+		<polygon class="st5" points="115.7,89.8 148.7,70 149.1,93.2 133.8,102.8 		"/>
+		<polygon class="st5" points="155.3,70.9 154.9,92.6 170.2,102 188.1,89.6 		"/>
+		<polygon class="st5" points="172.1,106 191.9,94.5 192.1,135.4 172.3,124.3 		"/>
+		<polygon class="st5" points="154.2,138.2 171.7,128.2 187,140.1 155.9,159.5 		"/>
+		<polygon class="st5" points="116.7,138.8 133.1,128.4 148.7,137.6 148.5,158.2 		"/>
+		<polygon class="st5" points="112.9,95.8 131,105 131.2,124.6 112.5,133.1 		"/>
+	</g>
+</g>
+</svg>
