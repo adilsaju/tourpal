@@ -12,26 +12,17 @@ const firebaseApp = firebase.initializeApp({
 const db = firebaseApp.firestore();
 const auth = firebaseApp.auth();
 
-signup.addEventListener ('click', () => {
 
-    console.log("clicked singup");  
-    // console.log(email.value, password.value)
+signin.addEventListener ('click', (e) => {
+  e.preventDefault();
+  console.log("haha")
+  temp1.checkValidity();
+  temp1.reportValidity();
+  if ( temp1.checkValidity() != true)
+  {
+      return;
+  }
 
-    const email = document.getElementById('email1').value
-    const password = document.getElementById('password1').value
-
-    auth.createUserWithEmailAndPassword(email, password)
-    .then((res) => {
-        console.log(res.user)
-    })
-    .catch((err) => {
-        alert(err.message)
-        console.log(err.code)
-        console.log(err.message)
-    })
-  });
-
-  signin.addEventListener ('click', () => {
 
     console.log("clicked signin");  
     // console.log(email.value, password.value)
@@ -41,60 +32,88 @@ signup.addEventListener ('click', () => {
 
     auth.signInWithEmailAndPassword(email, password)
     .then((res) => {
-        console.log(res.user)
+
+
+        onSuccessLogin(email, password, res);
     })
     .catch((err) => {
-        alert(err.message)
+        // alert(err.message)
+        customFlash("The password is invalid or the user does not have a password")
         console.log(err.code)
         console.log(err.message)
     })
   });
 
-//crud
-  const saveData = () => {
-    const email = document.getElementById('email1').value
-    const password = document.getElementById('password1').value
 
-    db.collection('user')
-    .add({
-        email: email,
-        password: password
-    })
-    .then((docRef) => {
-        console.log("Document written with ID: ", docRef.id);
-    })
-    .catch((error) => {
-        console.error("Error adding document: ", error);
-    });
+  async function customFlash(message){
+    alert_body.innerHTML = `${message}`
+    let alert = document.querySelector("#alert")
+    alert.classList.add("alert-show")
+    await sleep(3000);
+    alert.classList.remove("alert-show")
+  
+  }
+  
+  
+  function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+function onSuccessLogin(email, password, res) {
+    console.log("on success")
+
+    console.log(res.user)
+    // alert(`Welcome ${email}`)
+
+
+
+    sessionStorage.setItem('is_logged_in', true);
+    sessionStorage.setItem('logged_in_email', email);
+    sessionStorage.setItem('logged_in_uid', res.user.uid);
+    sessionStorage.setItem('logged_in_password', password);
+    // sessionStorage.setItem('user_type', "customer");
+    if (sessionStorage.getItem('user_type') === "driver"){
+      console.log("driverrrrrrrrrrrrrrrrrrrr")
+        window.location.href = `/public/templates/driver/driver-dashboard.html`
+    }
+    else
+    {
+      window.location.href = `/public/templates/customer/index.html`
+    }
+
+
 }
 
-const readData = () => {
-    db.collection('users')
-    .get()
-    .then((data) => {
-        console.log(data.docs.map((item) => {
-            return {...item.data(), id: item.id}
-        }))
-    })
-}
+window.onload = function() {
+  // const urlParams = new URLSearchParams(window.location.search);
+  // const user_type = urlParams.get('user_type');
+  // sessionStorage.setItem('user_type', user_type);
+   if ( sessionStorage.getItem('user_type') === "driver" )
+   {
+    // disable
+    // document.querySelector("#abc").href = "#" ; 
+    document.querySelector("#abc").style.display = "none";
 
-const updateData = () => {
-    db.collection('users').doc('6caYOiNxwviOJFIQ4Uag')
-    .update({
-        email: 'ashishisagoodboy1234@gmail.com',
-        password: '123456'
-    })
-    .then(() => {
-        alert('Data Updated')
-    })
-}
+   }
 
-const deleteData = () => {
-    db.collection('users').doc('6caYOiNxwviOJFIQ4Uag').delete()
-    .then(() => {
-        alert('Data Deleted')
-    })
-    .catch((err) =>{
-        console.log(err)
-    })
+    is_logged_in = sessionStorage.getItem('is_logged_in');
+    
+  if (is_logged_in === "true") {
+    //redirect
+    console.log("user already logged in")
+
+    if (sessionStorage.getItem('user_type') === "driver"){
+      console.log("driverrrrrrrrrrrrrrrrrrrr")
+        window.location.href = `/public/templates/driver/driver-dashboard.html`
+    }
+    else
+    {
+      window.location.href = `/public/templates/customer/index.html`
+    }
+
+  }
+
+
+
+
 }
